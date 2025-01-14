@@ -5,6 +5,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4D6E30C-213F-4FAF-B2A4-7E2E330C5DCC}|..\\Class_1th_Stream\\Class_1th_Stream.vcxproj|D:\\academy_Class\\Class_1th_Stream\\Class_1th_Stream.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +27,22 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAC8AAAAAAAAAAADwvz4AAAACAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAHAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-13T09:07:25.928Z",
+              "WhenOpened": "2025-01-14T10:19:54.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class_1th_Stream.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Class_1th_Stream\\Class_1th_Stream.cpp",
+              "RelativeDocumentMoniker": "..\\Class_1th_Stream\\Class_1th_Stream.cpp",
+              "ToolTip": "D:\\academy_Class\\Class_1th_Stream\\Class_1th_Stream.cpp",
+              "RelativeToolTip": "..\\Class_1th_Stream\\Class_1th_Stream.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAYwE4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-14T09:06:07.314Z",
               "EditorCaption": ""
             }
           ]
