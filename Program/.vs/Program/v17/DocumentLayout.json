@@ -5,6 +5,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFFB4FEE-25F4-4190-9E69-0FB4E14C3008}|..\\Class_4th_ShallowCopy\u0026DeepCopy\\Class_4th_ShallowCopy\u0026DeepCopy.vcxproj|D:\\academy_Class\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +17,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "source.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
+              "RelativeDocumentMoniker": "..\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
+              "ToolTip": "D:\\academy_Class\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
+              "RelativeToolTip": "..\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAEsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-17T09:40:41.017Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +40,7 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAALAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-14T10:19:54.327Z",
               "EditorCaption": ""

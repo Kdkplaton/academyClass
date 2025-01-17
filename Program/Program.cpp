@@ -1,106 +1,69 @@
-﻿// Program.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿#include <iostream>
 
-#include <iostream>
 using namespace std;
 
 class Unit {
-private:
+protected:
 	int health;
-	
-	int* kill;
+	int defense;
 
 public:
-	Unit(int health=0, int atk=6, int def=0) {
-#pragma region this 포인터
-		// 자기 자신(클래스, 오브젝트 등...)을 가리키는 포인터
+	Unit(int hp = 10, int def = 0) {
+		this->health = hp;
+		this->defense = def;
 
-#pragma endregion
-		this->health = health;
-		
-		kill = new int;
-		*kill = 0;
-	}
-	
-	Unit(const Unit& clone) {
-		health = clone.health;
-		kill = clone.kill;
-	}
-	~Unit() {
-		delete kill;
 	}
 
-	const int& Health() {
-		return health;
+	int getHP() {
+		return this->health;
 	}
-	const int& Kill() {
-		return *kill;
+	int getDef() {
+		return this->defense;
 	}
-	void setHealth(int val) {
-		this->health = val;
+
+	void setHP(int HP) {
+		this->health = HP;
 	}
 
 };
 
-int main()
-{
-#pragma region 복사 생성자
-	// 같은 객체를 복사하여 생성기킬 때 호출되는 생성자
+class Marine : public Unit {
+private:
+	int damage;
 
-	// 복사 생성자를 정의하지 않고 객체를 복사하게 되면, 기본 복사생성자가 호출되기 때문에 얕은 복사로 객체가 복사됨
+public:
+	Marine(int atk = 6) {
+		this->setHP(40);
+		this->damage = atk;
+	}
 
-	//Unit marine(40);
-	//Unit marine1(marine);			// 깊은 복사 (값만 복사)
-	//Unit& marine2(marine);		// 얕은 복사 (주소 복사)
-	//
-	//// 복사 차이 확인용 값 변경
-	//marine.setHealth(60);
-	//marine.setAtk(7);
-	//marine.setDef(1);
-	//
-	//cout << "marine의  health/atk/def 값: " << marine.Health() << "/" << marine.Atk() << "/" << marine.Def() << endl;
-	//cout << "marine1의 health/atk/def 값: " << marine1.Health() << "/" << marine1.Atk() << "/" << marine1.Def() << endl;
-	//cout << "marine2의 health/atk/def 값: " << marine2.Health() << "/" << marine2.Atk() << "/" << marine2.Def() << endl;
+	int getAtk() {
+		return this->damage;
+	}
+};
 
+int main() {
+#pragma region 캡슐화
+	// 클래스 안에 서로 연관되어 있는 속성과 기능들을 하나의 캡슐로 만들어 데이터를 외부로부터 보호하며,
+	// 사용자에게 인터페이스를 제공하여 클래스의 기능을 사용하게 하는 것
 #pragma endregion
 
-#pragma region 얕은 복사
-	// 객체를 복사할 때 주소 값을 복사하여 샅은 메모리 공간을 가리키게 하는 것
+#pragma region 상속
+	// 상위 클래스의 속성을 하위 클래스가 사용할 수 있도록 설정해주는 기능
 
-	// 얕은 복사의 경우 같은 객체가 서로 같은 메모리 공간을 참조하고 있기 때문에
-	// 하나의 객체로 값을 변경하게 되면 서로 참조된 객체도 함께 영향을 받음
+	// 클래스의 상속 관계에서 상위 클래스는 하위 클래스의 속성을 사용할 수 없으며,
+	// 하위 클래스는 상위 클래스의 메모리가 포함된 상태로 메모리의 크기가 결정됨
+	
+	Unit u1;
+	Marine m1;
 
-	//int* ptr1 = new int;
-	//int* ptr2 = ptr1;
-	//int& ref1 = *ptr1;
-	//int& ref2 = ref1;
-	//*ptr1 = 10;
-	//
-	//cout << "ptr1의 주소/값: " << ptr1 << "/" << *ptr1 << endl;
-	//cout << "ptr2의 주소/값: " << ptr2 << "/" << *ptr2 << endl;
-	//cout << "ref1: " << ref1 << " | ref2: " << ref2 << endl << endl;
-	//
-	//delete(ptr1);
-	//cout << "ptr2의 주소/값: " << ptr2 << "/" << *ptr2 << endl;
-	//cout << "ref1: " << ref1 << " | ref2: " << ref2 << endl;
-	//// 주소는 남는다...?
+	cout << "Unit의 크기: " << sizeof(u1) << '\t';
+	cout << "Marine의 크기: " << sizeof(m1) << endl;
 
-	Unit unit1(50);
-	Unit unit2(unit1);		// 얕은 복사
-
-	cout << "unit1의 health/kill: " << unit1.Health() << "/" << unit1.Kill() << endl;
-	cout << "unit2의 health/kill: " << unit2.Health() << "/" << unit2.Kill() << endl;
-
-	// unit1에서 delete kill; 실행시 unit2의 kill도 delete 되는 것이므로, 이후 unit2가 delete 시도시 에러가 발생한다. (이미 delete 되었으므로)
+	cout << "마린1의 체력/공격력/방어력: " << m1.getHP() << '/' << m1.getAtk() << '/' << m1.getDef() << endl;
 
 #pragma endregion
 
 
 	return 0;
 }
-
-// 레퍼런스(&)와 포인터(*)의 차이 (조사하기!)
-// 레퍼런스는 변수(값)의 주소를 가지지 않지만, 포인터는 주소를 가진다.
-
-
-// Unity 프리펩? 기능
-// 
