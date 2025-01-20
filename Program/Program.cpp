@@ -2,67 +2,87 @@
 
 using namespace std;
 
-class Unit {
-protected:
-	int health;
-	int defense;
-
+class Weapon {
+	int attack;
+	int intersection;
 public:
-	Unit(int hp = 10, int def = 0) {
-		this->health = hp;
-		this->defense = def;
-
+	Weapon(int atk = 1, int range = 1) {
+		this->attack = atk;
+		this->intersection = range;
 	}
 
-	int getHP() {
-		return this->health;
-	}
-	int getDef() {
-		return this->defense;
-	}
-
-	void setHP(int HP) {
-		this->health = HP;
-	}
-
-};
-
-class Marine : public Unit {
-private:
-	int damage;
-
-public:
-	Marine(int atk = 6) {
-		this->setHP(40);
-		this->damage = atk;
+	void setAtk(int attack = 1) {
+		this->attack = attack;
 	}
 
 	int getAtk() {
-		return this->damage;
+		return this->attack;
+	}
+	int getRange() {
+		return this->intersection;
+	}
+
+#pragma region 오버라이드
+	// 상위 클래스에 있는 함수를 하위 클래스에서 재정의하여 사용하는 기능
+
+	virtual void Attack() {
+		cout << "공격! " << this->getAtk() << " 데미지!" << endl;
+	}
+
+	// 오버라이든느 상속 관계에서만 이루어지며, 하위 클래스의 함수를 재정의할 때 상위 클래스의 함수 형태와 일치해야 함
+
+#pragma endregion
+
+
+	
+
+};
+
+class Knife : public Weapon {
+
+
+public:
+	Knife(int attack) {
+		this->setAtk(attack);
+	}
+
+	void Attack() {
+		cout << "나이프 공격! " << this->getAtk() << " 데미지!" << endl;
+	}
+};
+class Knuckles : public Weapon {
+
+
+public:
+	Knuckles(int attack) {
+		this->setAtk(attack);
+	}
+
+	void Attack() {
+		cout << "쌍너클 공격! " << this->getAtk() << " 데미지!" << endl;
 	}
 };
 
 int main() {
-#pragma region 캡슐화
-	// 클래스 안에 서로 연관되어 있는 속성과 기능들을 하나의 캡슐로 만들어 데이터를 외부로부터 보호하며,
-	// 사용자에게 인터페이스를 제공하여 클래스의 기능을 사용하게 하는 것
-#pragma endregion
 
-#pragma region 상속
-	// 상위 클래스의 속성을 하위 클래스가 사용할 수 있도록 설정해주는 기능
+#pragma region 다형성
+	// 여러개의 서로 다른 개체가 동일한 기능을 서로 다른 방법으로 처리할 수 있는 작업
 
-	// 클래스의 상속 관계에서 상위 클래스는 하위 클래스의 속성을 사용할 수 없으며,
-	// 하위 클래스는 상위 클래스의 메모리가 포함된 상태로 메모리의 크기가 결정됨
-	
-	Unit u1;
-	Marine m1;
+	// 다형성은 컴파일 시점에 함수와 속성이 결정되는 정적 바인딩을 하지 않고, 실행 시간에 함수와 속성이 결정될 수 있는 동적 바인딩을 가능하게 함
 
-	cout << "Unit의 크기: " << sizeof(u1) << '\t';
-	cout << "Marine의 크기: " << sizeof(m1) << endl;
+	Weapon w1;
+	Knife* knife1 = new Knife(5);
+	Knuckles* knuckles1 = new Knuckles(3);
 
-	cout << "마린1의 체력/공격력/방어력: " << m1.getHP() << '/' << m1.getAtk() << '/' << m1.getDef() << endl;
+	w1.Attack();
+	knife1->Attack();
+	knuckles1->Attack();
 
 #pragma endregion
+
+
+
+
 
 
 	return 0;

@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFFB4FEE-25F4-4190-9E69-0FB4E14C3008}|..\\Class_4th_ShallowCopy\u0026DeepCopy\\Class_4th_ShallowCopy\u0026DeepCopy.vcxproj|D:\\academy_Class\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{584FD6BE-F775-4A8A-AD8A-1A8CE0AF2CAA}|..\\Class_5th_Inheritance\\Class_5th_Inheritance.vcxproj|D:\\academy_Class\\Class_5th_Inheritance\\Class_5th_Inheritance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,14 +22,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "source.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
-              "RelativeDocumentMoniker": "..\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
-              "ToolTip": "D:\\academy_Class\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
-              "RelativeToolTip": "..\\Class_4th_ShallowCopy\u0026DeepCopy\\source.cpp",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAAAEsAAAABAAAA",
+              "Title": "Class_5th_Inheritance.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Class_5th_Inheritance\\Class_5th_Inheritance.cpp",
+              "RelativeDocumentMoniker": "..\\Class_5th_Inheritance\\Class_5th_Inheritance.cpp",
+              "ToolTip": "D:\\academy_Class\\Class_5th_Inheritance\\Class_5th_Inheritance.cpp",
+              "RelativeToolTip": "..\\Class_5th_Inheritance\\Class_5th_Inheritance.cpp",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABAAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-17T09:40:41.017Z",
+              "WhenOpened": "2025-01-20T10:39:52.525Z",
               "EditorCaption": ""
             },
             {
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAADcAAAABAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAEUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-14T10:19:54.327Z",
               "EditorCaption": ""
