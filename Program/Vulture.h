@@ -5,7 +5,9 @@ class Vulture : public Terran
 {
 
 public:
-	Vulture(int attack, int defense, int health);
+	Vulture();
+
+	void Stats();
 
 };
 

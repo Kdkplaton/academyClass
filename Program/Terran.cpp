@@ -1,8 +1,13 @@
 #include "Terran.h"
 
-Terran::Terran(int attack, int defense, int health)
+Terran::Terran() {
+	this->health = 1;
+	this->attack = 1;
+	this->defense = 1;
+}
+
+void Terran::Stats()
 {
-	this->attack = 0;
-	this->defense = 0;
-	this->health = 0;
+	cout << "Attack: " << this->attack << " / Defense: " << this->defense << " / Health: " << this->health << endl;
+
 }

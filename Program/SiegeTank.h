@@ -3,9 +3,12 @@
 
 class SiegeTank : public Terran
 {
+	int attackMode;
 
 public:
 	SiegeTank();
+
+	void Stats();
 
 };
 
