@@ -7,7 +7,44 @@
       "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40A8ABBC-D39E-496A-9989-B6CD3756B122}|..\\Class_7th_Virtual_Function\\Class_7th_Virtual_Function.vcxproj|D:\\academy_Class\\Class_7th_Virtual_Function\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Banana.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Banana.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Banana.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Banana.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Fruit.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Fruit.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Fruit.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Fruit.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Paint.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Paint.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Brush.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Brush.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Paint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Paint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Brush.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Brush.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Pencil.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Pencil.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Pencil.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Pencil.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,8 +54,138 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Banana.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Banana.cpp",
+              "RelativeDocumentMoniker": "Banana.cpp",
+              "ToolTip": "D:\\academy_Class\\Program\\Banana.cpp",
+              "RelativeToolTip": "Banana.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-24T10:31:33.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Banana.h",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Banana.h",
+              "RelativeDocumentMoniker": "Banana.h",
+              "ToolTip": "D:\\academy_Class\\Program\\Banana.h",
+              "RelativeToolTip": "Banana.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-24T10:31:06.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Fruit.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Fruit.cpp",
+              "RelativeDocumentMoniker": "Fruit.cpp",
+              "ToolTip": "D:\\academy_Class\\Program\\Fruit.cpp",
+              "RelativeToolTip": "Fruit.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-24T10:30:20.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Fruit.h",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Fruit.h",
+              "RelativeDocumentMoniker": "Fruit.h",
+              "ToolTip": "D:\\academy_Class\\Program\\Fruit.h",
+              "RelativeToolTip": "Fruit.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-24T10:29:53.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Pencil.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Pencil.cpp",
+              "RelativeDocumentMoniker": "Pencil.cpp",
+              "ToolTip": "D:\\academy_Class\\Program\\Pencil.cpp",
+              "RelativeToolTip": "Pencil.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-24T09:18:44.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Pencil.h",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Pencil.h",
+              "RelativeDocumentMoniker": "Pencil.h",
+              "ToolTip": "D:\\academy_Class\\Program\\Pencil.h",
+              "RelativeToolTip": "Pencil.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-24T09:18:17.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Brush.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Brush.cpp",
+              "RelativeDocumentMoniker": "Brush.cpp",
+              "ToolTip": "D:\\academy_Class\\Program\\Brush.cpp",
+              "RelativeToolTip": "Brush.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-24T09:17:55.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Brush.h",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Brush.h",
+              "RelativeDocumentMoniker": "Brush.h",
+              "ToolTip": "D:\\academy_Class\\Program\\Brush.h",
+              "RelativeToolTip": "Brush.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-24T09:17:19.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Paint.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Paint.cpp",
+              "RelativeDocumentMoniker": "Paint.cpp",
+              "ToolTip": "D:\\academy_Class\\Program\\Paint.cpp",
+              "RelativeToolTip": "Paint.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-24T09:16:12.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Paint.h",
+              "DocumentMoniker": "D:\\academy_Class\\Program\\Paint.h",
+              "RelativeDocumentMoniker": "Paint.h",
+              "ToolTip": "D:\\academy_Class\\Program\\Paint.h",
+              "RelativeToolTip": "Paint.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-24T09:15:09.362Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -27,22 +194,9 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-23T10:39:55.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "source.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\Class_7th_Virtual_Function\\source.cpp",
-              "RelativeDocumentMoniker": "..\\Class_7th_Virtual_Function\\source.cpp",
-              "ToolTip": "D:\\academy_Class\\Class_7th_Virtual_Function\\source.cpp",
-              "RelativeToolTip": "..\\Class_7th_Virtual_Function\\source.cpp",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-23T10:39:01.366Z",
               "EditorCaption": ""
             }
           ]
