@@ -1,48 +1,33 @@
 ﻿#include <iostream>
-#include "Vector2.h"
 
 using namespace std;
 
+template <typename T>
+class List {
+private:
+	int size;
+	int index;
+
+	T* datas;
+
+public:
+	List(int s) {
+		this->size = s;
+		this->index = 0;
+	}
+
+};
+
 int main() {
 
-#pragma region xxx
+#pragma region 템플릿
+	// 데이터 형식에 의존하지 않고, 하나의 값이 여러 다른 데이터 형식을 가질 수 있는 기술에 중점을 두어 재사용성을 높일 수 있는 기능
+	
+	// 
 
-
-	Vector2* direction1 = new Vector2(5, 5);
-	Vector2* direction2 = new Vector2(1, 1);
-
-	direction1->coutX();
-	direction1->coutY();
-	direction2->coutX();
-	direction2->coutY();
-
-	Vector2 direction = (*direction1) + (*direction2);
-	direction.coutX();
-	direction.coutY();
-
-	delete direction1, direction2;
+	List<int> list1(5);
 
 #pragma endregion
-
-#pragma region yyy
-
-#pragma endregion
-
-
-	int n;
-	bool checker[42] = { false, };
-	int counter = 0;
-
-	for (int i = 0; i < 10; i++) {
-		cin >> n;
-		checker[n % 42] = true;
-	}
-
-	for (int j = 0; j < 42; j++) {
-		if (checker[j] == true) { counter++; }
-		else { continue; }
-	}
-	cout << counter << endl;
 
 
 	return 0;

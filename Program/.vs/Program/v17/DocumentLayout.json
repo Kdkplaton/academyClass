@@ -3,19 +3,11 @@
   "WorkspaceRootPath": "D:\\academy_Class\\Program\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{44591E19-399A-4BFD-B017-F3FEDF1DAE35}|..\\Class_9th_Operator_Overloading\\Class_9th_Operator_Overloading.vcxproj|D:\\academy_Class\\Class_9th_Operator_Overloading\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Vector2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Vector2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|D:\\academy_Class\\Program\\Vector2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E4E6590D-478E-4B5C-8FD9-B0763776DBF4}|Program.vcxproj|solutionrelative:Vector2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4396EF89-7D68-4CEC-8FF5-66331CA94BA8}|..\\Class_8th_Abstract\\Class_8th_Abstract.vcxproj|D:\\academy_Class\\Class_8th_Abstract\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,56 +17,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "source.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\Class_8th_Abstract\\source.cpp",
-              "RelativeDocumentMoniker": "..\\Class_8th_Abstract\\source.cpp",
-              "ToolTip": "D:\\academy_Class\\Class_8th_Abstract\\source.cpp",
-              "RelativeToolTip": "..\\Class_8th_Abstract\\source.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAeAAAA",
+              "DocumentMoniker": "D:\\academy_Class\\Class_9th_Operator_Overloading\\source.cpp",
+              "RelativeDocumentMoniker": "..\\Class_9th_Operator_Overloading\\source.cpp",
+              "ToolTip": "D:\\academy_Class\\Class_9th_Operator_Overloading\\source.cpp",
+              "RelativeToolTip": "..\\Class_9th_Operator_Overloading\\source.cpp",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAACwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-27T09:31:57.13Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Vector2.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\Program\\Vector2.cpp",
-              "RelativeDocumentMoniker": "Vector2.cpp",
-              "ToolTip": "D:\\academy_Class\\Program\\Vector2.cpp",
-              "RelativeToolTip": "Vector2.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-27T09:39:12.156Z",
+              "WhenOpened": "2025-01-31T10:20:31.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Vector2.h",
-              "DocumentMoniker": "D:\\academy_Class\\Program\\Vector2.h",
-              "RelativeDocumentMoniker": "Vector2.h",
-              "ToolTip": "D:\\academy_Class\\Program\\Vector2.h",
-              "RelativeToolTip": "Vector2.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-27T09:38:07.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Program.cpp",
               "DocumentMoniker": "D:\\academy_Class\\Program\\Program.cpp",
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-23T10:39:55.831Z",
               "EditorCaption": ""
