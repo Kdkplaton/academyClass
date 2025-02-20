@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 template <typename T>
 struct Node {
 private:
@@ -47,7 +48,10 @@ public:
         Node<T>* newNode = new Node<T>(data);
         Node<T>* cur = this->head;
 
-        if (this->head == nullptr) { this->head = newNode; }
+        if (this->head == nullptr) {
+            this->head = newNode;
+            this->head->setNext(newNode);
+        }
         else {
             newNode->setNext(this->head->getNext());
             this->head->setNext(newNode);
@@ -59,7 +63,7 @@ public:
     void push_end(T data) {
         Node<T>* newNode = new Node<T>(data);
 
-        if (this->head == nullptr) {}
+        if (this->head == nullptr) { this->head->setNext(newNode); }
         else {
             newNode->setNext(this->head->getNext());
             this->head->setNext(newNode);
@@ -94,17 +98,18 @@ public:
     }
 
     void delete_front() {
-        Node<T>* cur = this->head;       // 대상 지정
+        Node<T>* target = this->head;       // head 체크
 
-        if (cur == nullptr) { cout << "노드가 이미 없음!" << endl; }        // 노드가 1개도 없을 경우
+        if (target == nullptr) { cout << "노드가 이미 없음!" << endl; }        // 노드가 1개도 없을 경우
         else {
-            if (cur->getNext() == cur) {     // 노드가 1개만 있을 경우
-                delete cur;
+            target = target->getNext();
+            if (target == this->head) {     // 노드가 1개만 있을 경우
                 this->head = nullptr;
+                delete target;
             }
             else {
-                this->head->setNext(cur->getNext()->getNext());
-                delete cur->getNext();
+                this->head->setNext(target->getNext());
+                delete target;
             }
 
             this->size--;
@@ -133,9 +138,6 @@ public:
             cout << "End node Deleted!" << endl;
         }
 
-    }
-    void delete_at(int pos) {
-        // 도전 : 특정 위치의 노드 지우기
     }
 
     void printAll() {
@@ -238,8 +240,8 @@ int main()
     CLL.printSize();
     CLL.printAll();
 
-    CLL.delete_end();
-    CLL.delete_end();
+    CLL.delete_front();
+    CLL.delete_front();
     CLL.printSize();
     CLL.printAll();
 
@@ -252,10 +254,16 @@ int main()
     CLL.push_end(70);
     CLL.push_end(80);
     CLL.push_end(90);
-    CLL.printAll();
     CLL.printSize();
+    CLL.printAll();
+    CLL.delete_end();
+    CLL.delete_front();
+    CLL.delete_end();
+    CLL.printSize();
+    CLL.printAll();
 
 #pragma endregion
+
 
 
     return 0;
