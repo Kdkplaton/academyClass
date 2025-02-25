@@ -1,114 +1,110 @@
 ﻿#include <iostream>
-
 using namespace std;
 
 template <typename T>
-struct CircularQueue {
+struct Vector {
 private:
-    T* datas;
-    int front, rear, size, count;
+	T* datas;
+	int capacity;
+	int size;
 public:
-    CircularQueue(int size = 5) {
-        this->size = size;
-        this->datas = new T[this->size];
-        this->front = 0;
-        this->rear = 0;
-        this->count = 0;
-    }
-    ~CircularQueue() {
-        while (this->count > 0) { Pop(); }
-        delete datas;
-        cout << "종료전 원형-큐 해제!" << endl;
-    }
+	Vector() {
+		this->capacity = 0;
+		this->datas = nullptr;
+		this->size = 0;
+	}
+	~Vector() {
+		delete datas;
+	}
 
-    void Push(T data) {
-        if (this->count < this->size) {
-            if (this->rear == this->size) { this->rear = 0; }
+	void resize() {
+		T* temp = datas;
+		if (this->size == 0) { this->capacity = 2; }
+		else { this->capacity = this->size *2; }
 
-            datas[this->rear++] = data; this->count++;
-            cout << "원형-큐에 데이터 Push 됨!" << endl;
-        }
-        else { cout << "!! 큐가 가득 찼습니다 !!" << endl; }
-    }
-    void Pop() {
-        if (this->count != 0) {
-            if (this->front == this->size) { this->front = 0; }
-            datas[this->front++] = NULL; this->count--;
-            cout << "원형-큐에서 데이터 Pop 됨!" << endl;
-        }
-        else { cout << "!! 큐가 비어있습니다 !!" << endl; }
-    }
+		int resized = this->capacity;
+		datas = new T[resized];
 
-    void printAll() {
-        if (this->count == 0) { cout << "!! 큐가 비어있음 !!" << endl; }
-        int idx;
-        for (int i = 0; i < this->count; i++) {
-            idx = this->front + i;
-            if (idx >= this->size) { idx -= this->size; }
+		if (temp == nullptr) {}
+		else { 
+			for (int i = 0; i < size; i++) { datas[i] = temp[i]; }
+			delete temp;
+		}
 
-            cout << i + 1 << "번째 data: " << this->datas[idx] << endl;
-        }
-        cout << endl;
-    }
-    void printCount() {
-        cout << "원형-큐에 데이터는 " << this->count << "개 있습니다." << endl;
-    }
+		cout << "capacity is resized to: " << this->capacity << endl;
+	}
 
-    void printFront() { cout << "front의 위치: " << this->front << endl; }
-    void printRear() { cout << "rear의 위치: " << this->rear << endl; }
+	void push_back(T data) {
+		if (this->size == this->capacity) { this->resize(); }
+
+		this->datas[this->size++] = data;
+
+		cout << "벡터에 push 됨!" << endl;
+	}
+	void pop_back() {
+		if (this->size == 0) { cout << "Pop 실패 : 벡터가 비어있음!" << endl; }
+		else { this->datas[size--] = NULL; }
+
+		cout << "벡터에서 pop 됨!" << endl;
+	}
+
+	void Capacity() {
+		cout << "벡터의 capacity: " << this->capacity << endl;
+	}
+	void Size() {
+		cout << "벡터의 size: " << this->size << endl;
+	}
+
+	void printAll() {
+		for (int i = 0; i < size; i++) {
+			cout << i + 1 << "번째 데이터: " << this->datas[i] << endl;
+		}
+		cout << endl;
+	}
+
 
 };
 
 int main() {
-#pragma region 원형 큐
-    cout << "원형 큐 시작!" << endl;
-    CircularQueue<int> c_que1;
-    c_que1.printCount();
-    c_que1.printAll();
+#pragma region 벡터
+	cout << "벡터 시작!" << endl;
+	Vector<int> v1;
+	v1.Capacity();
+	v1.Size();
+	// v1.pop_back();       // empty 상태에서 pop을 실행해서 에러 발생
 
-    c_que1.Push(10);
-    c_que1.Push(20);
-    c_que1.Pop();
-    c_que1.Pop();
-    c_que1.Pop();
-    c_que1.Push(30);
-    c_que1.Push(40);
-    c_que1.Push(50);
-    c_que1.Push(60);
-    c_que1.Push(70);
-    c_que1.Push(80);
-    c_que1.printFront();
-    c_que1.printRear();
-    c_que1.printCount();
-    c_que1.printAll();
+	v1.push_back(10);
+	v1.Capacity();
+	v1.Size();
+	v1.printAll();
 
-    c_que1.Pop();
-    c_que1.Pop();
-    c_que1.Pop();
-    c_que1.Pop();
-    c_que1.Pop();
-    c_que1.Pop();
-    c_que1.printCount();
-    c_que1.printFront();
-    c_que1.printRear();
-    c_que1.printAll();
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.pop_back();
+	v1.Capacity();
+	v1.Size();
+	v1.printAll();
 
-    c_que1.Push(90);
-    c_que1.Pop();
-    c_que1.Push(100);
-    c_que1.Push(110);
-    c_que1.Pop();
-    c_que1.Push(120);
-    c_que1.Push(130);
-    c_que1.printCount();
-    c_que1.printFront();
-    c_que1.printRear();
-    c_que1.printAll();
+	v1.push_back(40);
+	v1.push_back(50);
+	v1.push_back(60);
+	v1.pop_back();
+	v1.push_back(70);
+	v1.Capacity();
+	v1.Size();
+	v1.printAll();
 
-    cout << endl;
+	v1.pop_back();
+	v1.pop_back();
+	v1.pop_back();
+	v1.pop_back();
+	v1.Capacity();
+	v1.Size();
+	v1.printAll();
+
+	cout << endl;
 
 #pragma endregion
-
 
 
 	return 0;
