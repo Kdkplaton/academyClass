@@ -2,127 +2,126 @@
 using namespace std;
 
 template <typename T>
-struct Vector {
+struct hashTable {
 private:
-	T* datas;
-	int capacity;
+	char** key;
+	T* data;
 	int size;
+
 public:
-	Vector() {
-		this->capacity = 0;
-		this->datas = nullptr;
+	hashTable(int max = 5) {
 		this->size = 0;
+		this->key = new char* [max];
+		this->data = new T[max];
 	}
-	~Vector() {
-		delete datas;
+	~hashTable() {
+		delete key;
+		delete data;
 	}
 
-	void resize() {
-		// 제시된 방법
-		// 1. capacity에 새로운 size값 저장
-		// 2. 새로운 포인터 변수를 생성하여 새로 만들어진 메모리 공간 지정
-		// 3. 새로운 메모리 공간의 값 초기화
-		// 4. 기존 배열에 있는 값을 복사하여 새로운 배열에 저장
-		// 5. 기존 배열의 메모리를 해제
-		// 6. 기존 배열을 가리키던 포인터 변수의 값을 새로운 배열의 시작 주소로 변경
-
-		// 해결한 방법
-		// 1. capacity에 새로운 size값 저장
-		// 2. 새로운 포인터 변수를 생성하여 기존 메모리 공간 지정
-		// 3. 새로운 메모리 공간 생성하여 기존 배열을 가리키던 포인터 변수로 지정
-		// 4. (새로 생성한 포인터 변수가 가리키는) 기존 메모리 공간의 값을 새 메모리 공간에 복사, 나머지 빈 공간 초기화
-		// 5. 기존 메모리 공간 해제
-
-		if (this->capacity == 0) { this->capacity = 2; }
-		else { this->capacity = this->size *2; }
-
-		T* temp = this->datas;
-		int resized = this->capacity;
-		this->datas = new T[resized];
-
-		for (int i = 0; i < this->capacity; i++) {
-			if (i < this->size) { this->datas[i] = temp[i]; }
-			else { this->datas[i] = NULL; }
+	void Add(char* key, T* data) {
+		for (int i = 0; i < size; i++) {
+			if (this->key[i] = key) {}
+			else {}
 		}
-		delete temp;
 
-		cout << "capacity is resized to: " << this->capacity << endl;
-	}
 
-	void push_back(T data) {
-		if (this->size == this->capacity) { this->resize(); }
-
-		this->datas[this->size++] = data;
-		cout << "벡터에 push 됨!" << endl;
-	}
-	void pop_back() {
-		if (this->size == 0) { cout << "Pop 실패 : 벡터가 비어있음!" << endl; }
-		else {
-			this->datas[--size] = NULL;
-			cout << "벡터에서 pop 됨!" << endl;
-		}
-	}
-
-	T Front() { return this->datas[0]; }
-	T Back() { return this->datas[this->size -1]; }
-	T* Begin() { return &(this->datas[0]); }
-	T* End() { return &(this->datas[this->size]); }		// !! end는 마지막 데이터 주소의 다음을 말함 !!
-
-	const int Capacity() { return this->capacity; }
-	const int Size() { return this->size; }
-
-	void printAll() {
-		for (int i = 0; i < this->size; i++) {
-			if (this->datas[i] == NULL) { cout << "!! 비어있는 공간 !!" << endl; }
-			else { cout << i + 1 << "번째 데이터: " << this->datas[i] << endl; }
-		}
-		cout << endl;
 	}
 
 };
 
+struct String {
+private:
+	char* string;
+	int size;
+public:
+	String(char* input = nullptr) {
+		this->string = input;
+		this->size = 0;
+	}
+	~String() {
+		delete this->string;
+	}
+
+	int getLen(const char* target) {
+		int count = 0;
+		while (target[count] != '\0') { count++; }
+
+		return count;
+	}
+
+	void operator = (const char* input) {
+		// 1. 복사할 문자열 크기 구하기 & 메모리 생성
+		int length = getLen(input);		// 문자열 길이 구하기
+		this->size = length +1;					// 문자열 크기 설정
+		char* temp = new char[this->size];		// 설정된 크기로 메모리 생성
+
+		// 2. 생성된 메모리에 문자열 복사
+		int idx = 0;
+		while (input[idx] != '\0') {
+			temp[idx] = input[idx++];
+		}
+		temp[idx] = '\0';		// 문자열에 '\0'는 복사되지 않았으므로 '\0'도 복사
+
+		// 3. 기존 메모리 해제 및 포인터 지정
+		delete[] this->string;	// 기존 메모리 할당 해제
+		this->string = temp;	// 복사된 메모리 지정
+
+		temp = nullptr;			// 복사에 사용한 포인터가 지정하는 메모리 변경
+		delete temp;			// 복사에 사용한 포인터 해제 (안해도 됨?)
+	}
+	void operator + (const char* target) {
+		int addLength = getLen(target);
+		char* temp = new char[this->size + addLength];
+
+		// 기존 문자열
+		int idx = 0;
+		while (this->string[idx] != '\0') {
+			temp[idx] = this->string[idx++];
+		}
+		int endPoint = idx;
+
+		// 추가할 문자열
+		idx = 0;
+		while (target[idx] != '\0') {
+			temp[endPoint + idx] = target[idx++];
+		}
+		temp[endPoint + idx] = '\0';
+
+		// 크기 변경
+		int totalLength = getLen(temp);
+		this->size = totalLength + 1;
+
+		delete[] this->string;
+		this->string = temp;
+
+		temp = nullptr;
+		delete temp;
+
+	}
+
+	const char* getStr() { return this->string; }
+	void printStr() { cout << this->string << endl; }
+	int Size() { return this->size; }
+	
+};
+
 int main() {
-#pragma region 벡터
-	cout << "벡터 시작!" << endl;
-	Vector<int> v1;
-	cout << "벡터의 capacity: " << v1.Capacity() << endl;
-	cout << "벡터의 size: " << v1.Size() << endl;
-	v1.pop_back();
+#pragma region 문자열(String)
+	String str1;
+	str1 = "Hello World!";
+	
+	str1.printStr();
+	cout << "문자열 크기: " << str1.Size() << endl;
+	cout << "문자열 길이: " << str1.getLen(str1.getStr()) << endl;
+	
+	cout << endl;
 
-	v1.push_back(10);
-	cout << "벡터의 capacity: " << v1.Capacity() << endl;
-	cout << "벡터의 size: " << v1.Size() << endl;
-	v1.printAll();
-
-	v1.push_back(20);
-	v1.push_back(30);
-	v1.pop_back();
-	cout << "벡터의 capacity: " << v1.Capacity() << endl;
-	cout << "벡터의 size: " << v1.Size() << endl;
-	v1.printAll();
-
-	v1.push_back(40);
-	v1.push_back(50);
-	v1.push_back(60);
-	v1.pop_back();
-	v1.push_back(70);
-	v1.push_back(80);
-	v1.pop_back();
-	cout << "벡터의 capacity: " << v1.Capacity() << endl;
-	cout << "벡터의 size: " << v1.Size() << endl;
-	cout << "벡터의 front(첫번째 값): " << v1.Front() << endl;
-	cout << "벡터의 back(마지막 값): " << v1.Back() << endl;
-	cout << "벡터의 begin(첫번째 주소): " << v1.Begin() << endl;
-	cout << "벡터의 end(마지막 주소): " << v1.End() << endl;
-	v1.printAll();
-
-	v1.pop_back();
-	v1.pop_back();
-	v1.pop_back();
-	v1.pop_back();
-	cout << "벡터의 capacity: " << v1.Capacity() << endl;
-	cout << "벡터의 size: " << v1.Size() << endl;
-	v1.printAll();
+	str1 = "Hello";
+	str1 + "World!";
+	str1.printStr();
+	cout << "문자열 크기: " << str1.Size() << endl;
+	cout << "문자열 길이: " << str1.getLen(str1.getStr()) << endl;
 
 	cout << endl;
 
