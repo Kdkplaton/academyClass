@@ -1,2 +1,7 @@
 ﻿  Program.cpp
-  Program.vcxproj -> D:\academy_Class\4th_Month\Program\x64\Debug\Program.exe
+D:\academy_Class\4th_Month\Program\Program.cpp(84,16): error C2248: 'HashTable_Node<std::string,int>::Bucket::next': protected 멤버('HashTable_Node<std::string,int>::Bucket' 클래스에서 선언)에 액세스할 수 없습니다.
+D:\academy_Class\4th_Month\Program\Program.cpp(85,14): error C2248: 'HashTable_Node<std::string,int>::Bucket::key': protected 멤버('HashTable_Node<std::string,int>::Bucket' 클래스에서 선언)에 액세스할 수 없습니다.
+D:\academy_Class\4th_Month\Program\Program.cpp(87,11): error C2248: 'HashTable_Node<std::string,int>::Bucket::value': protected 멤버('HashTable_Node<std::string,int>::Bucket' 클래스에서 선언)에 액세스할 수 없습니다.
+D:\academy_Class\4th_Month\Program\Program.cpp(89,26): error C2248: 'HashTable_Node<std::string,int>::Bucket::next': protected 멤버('HashTable_Node<std::string,int>::Bucket' 클래스에서 선언)에 액세스할 수 없습니다.
+D:\academy_Class\4th_Month\Program\Program.cpp(94,16): warning C4805: '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+D:\academy_Class\4th_Month\Program\Program.cpp(103,11): error C2248: 'HashTable_Node<std::string,int>::Bucket::next': protected 멤버('HashTable_Node<std::string,int>::Bucket' 클래스에서 선언)에 액세스할 수 없습니다.
