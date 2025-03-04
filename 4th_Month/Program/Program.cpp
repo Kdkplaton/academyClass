@@ -8,11 +8,11 @@ class HashTable {
 	protected:
 		KEY key;
 		VALUE value;
-		Bucket* next;
+		Node* next;
 	public:
-		Node(KEY key = NULL, VALUE value = NULL) {
-			this->key = key;
-			this->value = value;
+		Node(KEY Key = NULL, VALUE Value = NULL) {
+			this->key = Key;
+			this->value = Value;
 			this->next = nullptr;
 		}
 		~Node() {
@@ -38,7 +38,6 @@ class HashTable {
 		~Bucket() {
 			while (this->count > 0) { pop_front(); }
 		}
-
 		void pop_front() {
 			Node* temp = this->head;
 			this->head = this->head->getNext();
@@ -47,12 +46,55 @@ class HashTable {
 		}
 
 
-		void addNode(Node* newNode) {
+		void addNode(KEY Key, VALUE Value) {
 			Node* cur = this->head;
-			while (cur->getNext() != nullptr) { cur = cur->getNext(); }
+			bool isNew = true;
 
-			cur->getNext(newNode);
+			// 기존에 등록된 [키(key):값(value)] 인지 확인
+			while (cur->getNext() != nullptr) {
+				if (cur->getKey() == Key)
+				{
+					if (cur->getValue() == Value) { isNew = false; break; }
+				}
+				else { cur = cur->getNext(); }
+			}
+			// 없으면 cursor는 노드체인의 끝을 가리키고 있음
+
+			// 기존에 등록된 [키:값] 쌍이 아니라면 추가
+			if (isNew == true) {
+				Node* newNode = new Node(Key, Value);
+				cur->setNext(newNode);
+
+				newNode = nullptr;
+				delete newNode;
+				cout << "새 [키:값]노드 추가됨!" << endl;
+				this->count++;
+			}
+			else { cout << "!! 이미 존재하는 키:값 쌍 !!" << endl; }
 		}
+		void deleteNode(KEY target) {
+			Node* cur = this->head;
+			Node* temp = nullptr;
+
+			if (cur->getKey() == target) {
+				temp = cur;
+				this->head = cur->getNext();
+				delete temp;
+			}
+			else {
+				while (cur->getNext()->getNext() != nullptr) {
+					if (cur->getNext()->getKey() == target) {
+						temp = cur->getNext;
+						cur->setNext(temp->getNext());
+						delete temp;
+						return;
+					}
+					cur = cur->getNext();
+				}
+			}
+
+		}
+		Node* getHead() { return this->head; }
 		int getCount() { return this->count; }
 	};
 
@@ -69,65 +111,52 @@ public:
 		// delete key, value;
 	}
 
-	template <typename T>
-	int HashFunction(T key) {
-		int res, min = 0;
-
-		for (int i = 0; i < this->size; i++) {
-			if(min > this->buckets[i]->count)
-		}
-
-
+	int HashFunction(KEY Key) {
+		int res = (int)Key % this->size;
 		return res;
 	}
+	//int HashFunction(const char* Key) {
+	//	int res = Key % this->size;
+	//	return res;
+	//}
 
+	void Insert(KEY Key, VALUE Value) {
+		int hashKey = HashFunction(Key);
+		Bucket* selected = this->buckets[hashKey];
+		selected->addNode(Key, Value);
+		this->count++;
 
-	void Update(KEY k_Input, VALUE v_Input) {
-		int isNew = true;
-		Bucket* cursor = this->head;
+		selected = nullptr;
+		delete selected;
+	}
+	void Delete(KEY target) {
+		int hashKey = HashFunction(target);
+		Bucket* selected = &(this->buckets[hashKey]);
+		selected->deleteNode(target);
+		this->count--;
 
-		// 기존에 등록된 키(key) 인지 확인
-		while (cursor->getNext() != nullptr) {
-			if (cursor->getKey() == k_Input)
-			{
-				cursor->setValue(v_Input); isNew = false; break;
-			}
-			else { cursor = cursor->getNext(); }
-		}
-		// 미 감지 시점에서 cursor는 노드체인의 끝을 가리키고 있음
-		
-		// 기존에 등록된 키가 아니라면 추가
-		if (isNew == true) {
-			// 용량(size) 최대치 도달시 추가 실패
-			if (this->count == this->size) {
-				cout << "!! 테이블 용량 한계 !!" << endl;
-				return;
-			}
-			// 용량이 남았을 경우 추가
-			else {
-				Bucket* newNode = new Bucket(k_Input, v_Input);
-				cursor->next = newNode;
-				
-				newNode = nullptr;    delete newNode;
-			}
-
-		}
+		selected = nullptr;
+		delete selected;
 	}
 
 	void printAll() {
 		if (this->count == 0) { cout << "테이블이 비어있음!" << endl; }
 		else {
 			for (int i = 0; i < this->size; i++) {
-				Bucket* cur = this->buckets[i];
-				cout << i + 1 << "번째 Bucket" << endl;
+				Bucket* bucket = &(this->buckets[i]);
+				Node* cur = bucket->getHead();
+				if (bucket->getCount() == 0) { cout << i+1 << "번째 Bucket은 비어있음!" << endl; }
+				else {
+					cout << i + 1 << "번째 Bucket" << endl;
 
-				int counter = 0;
-				while (cur != nullptr) {
-					cout << counter + 1 << "번째 키[" << cur->getKey() << "]:값[" << cur->getValue() << "]" << endl;
+					int counter = 0;
+					while (cur != nullptr) {
+						cout << counter + 1 << "번째 키[" << cur->getKey() << "]:값[" << cur->getValue() << "]" << endl;
 
-					counter++;
-					cur = cur->getNext();
-				}
+						counter++;
+						cur = cur->getNext();
+					}
+				}				
 			}
 		}
 		cout << endl;
@@ -137,15 +166,19 @@ public:
 
 int main() {
 #pragma region 해시 테이블
-	HashTable<string,int> hashTable;
+	HashTable<const char *,int> hashTable;
 	hashTable.printAll();
 
-	hashTable.Update("Apple", 10);
-	hashTable.Update("Banana", 20);
+	hashTable.Insert("Apple", 10);
+	hashTable.Insert("Banana", 20);
+	hashTable.Insert("Banana", 50);
+	hashTable.Insert("Apple", 10);
 	hashTable.printAll();
 	
-	hashTable.Update("Candy", 30);
-	hashTable.Update("Apple", 40);
+	hashTable.Insert("Candy", 30);
+	hashTable.Insert("Apple", 40);
+	hashTable.Insert("Candy", 60);
+	hashTable.Insert("Apple", 70);
 	hashTable.printAll();
 
 #pragma endregion
