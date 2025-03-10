@@ -4,6 +4,27 @@
 using namespace std;
 
 template <typename T>
+struct Node {
+private:
+	T data;
+	Node* next;
+public:
+	Node(T data = NULL, Node* link = nullptr) {
+		this->data = data;
+		this->next = link;
+	}
+	~Node() {
+		delete this->next;
+	}
+
+	T getData() { return this->data; }
+	void setData(T input) { this->data = input; }
+	Node* getNext() { return this->next; }
+	void setNext(Node* input) { this->next = input; }
+
+};
+
+template <typename T>
 class AdjacencyMatrix {
 private:
 	T* datas;
@@ -42,9 +63,11 @@ public:
 	void deleteData(int target) {
 		if (this->links[target][0] == -1) { cout << "!! Error : 해당 위치에 데이터가 없음 !!" << endl; }
 		else {
+			this->datas[target] = NULL;			// 데이터 삭제
+			this->deleteEdge(target);				// 연결 해제
+			 if(this->count-1 == target) this->count--;			// 카운트 감소
 
-
-			this->count--;
+			cout << "데이터 삭제 됨!!" << endl;
 		}
 		
 	}
@@ -59,17 +82,23 @@ public:
 			cout << target1 << " <-> " << target2 << " 연결됨!" << endl;
 		}
 	}
-	void unEdge(int target) {
+	void deleteEdge(int target) {
 		for (int i = 0; i < this->size; i++) {
-			if (i == target) { continue; }
+			if (i == target) {
+				for (int j = 0; j < this->count; j++) { 
+					this->links[i][j] = -1;
+				}
+			}
 			else if (this->links[i][0] == -1) { continue; }
-			else { this->links[i][target]--; }
+			else { (this->links[i][target] < 1) ? NULL : this->links[i][target]--; }
 		}
 
 
 
 	}
 	void showLinkDetail() {
+		if (this->count == 0) { cout << "데이터가 없음!!" << endl; return; }
+
 		cout << "---------- [size:" << this->size << "] link 세부목록----------" << endl;
 		for (int i = 0; i < this->size; i++) {
 			for (int j = 0; j < this->size; j++) {
@@ -80,6 +109,8 @@ public:
 		}
 	}
 	void showLink() {
+		if (this->count == 0) { cout << "데이터가 없음!!" << endl; return; }
+
 		cout << "---- link 목록 ----" << endl;
 		for (int i = 0; i < this->count; i++) {
 			for (int j = 0; j < this->count; j++) {
@@ -89,6 +120,77 @@ public:
 			cout << endl;
 		}
 	}
+};
+
+template <typename T>
+class AdjacencyList {
+private:
+	Node<T>* dataList;
+	Node<T>** edgeList;
+	int size, count;
+public:
+	AdjacencyList(int size = 10) {
+		this->size = size;
+
+		this->dataList = new Node<T> [size];
+		for (int i = 0; i < size; i++) { this->edgeList[i] = NULL; }
+
+		this->edgeList = new Node<T>* [size];
+		for (int i = 0; i < size; i++) { this->edgeList[i] = nullptr; }
+
+		this->count = 0;
+	}
+	~AdjacencyList() {
+		for (int i = 0; i < this->size; i++) { delete[] this->dataList[i]; }
+		delete[] this->dataList;
+
+		// delete[] this->edgeList;
+	}
+
+	void push(T data) {
+		if (this->count == this->size) { cout << "!! Error : Adjacency List Overflow !!" << endl; return; }
+		
+		dataList[this->count] = data;
+
+		Node<T>* newNode = new Node<T>(data);
+		this->edgeList[this->count++] = newNode;
+	}
+	void edge(int target1, int target2) {
+		if (this->count == 0) { cout << "!! List가 비어있음 !!" << endl; return; }
+		if (target1 >= this->size || target2 >= this->size) { cout << "!! List 범위를 벗어남 !!" << endl; return; }
+
+		if (this->dataList[target1] == NULL || this->dataList[target2] == NULL) {
+			cout << "!! Error : 존재하지 않는 데이터와 연결시도 !!" << endl;
+		}
+		else {
+			edgeList[target1] = new Node(dataList[target2], edgeList[target1]);
+			edgeList[target2] = new Node(dataList[target1], edgeList[target2]);
+
+			cout << target1 << " <-> " << target2 << " 연결됨!" << endl;
+		}
+	}
+	
+	void showDataList() {
+		if (this->count == 0) { cout << "!! Error : 데이터 없음 !!" << endl; return; }
+
+		cout << "---- 데이터 목록 ----" << endl;
+		for (int i = 0; i < this->size; i++) { cout << dataList[i] << " ";	}
+		cout << endl;
+	}
+	void showEdgeList() {
+		if (this->count == 0) { cout << "!! Error : 데이터 없음 !!" << endl; return; }
+
+		cout << "---- 간선 연결 목록 ----" << endl;
+		for (int i = 0; i < this->size; i++) {
+			Node<T>* cur = this->edgeList[i];
+			while(cur != nullptr) {
+				cout << this->dataList[i] << " ";
+				cur = cur->getNext();
+			}
+			cout << endl;
+		}
+	}
+
 };
 
 int main() {
@@ -113,8 +215,10 @@ int main() {
 	//	0, 1, 1, 0
 	//};
 
-
+	/*
 	AdjacencyMatrix<int> AM1;
+	AM1.showLink();
+
 	AM1.addData(30);
 	AM1.addData(50);
 	AM1.edge(1, 2);
@@ -130,6 +234,32 @@ int main() {
 	AM1.addData(60);
 	AM1.edge(4, 2);
 	AM1.showLink();
+
+	cout << endl;
+
+	AM1.deleteData(1);
+	AM1.showLink();
+	*/
+
+	AdjacencyList<int> AL1;
+	AL1.showDataList();
+	AL1.showEdgeList();
+	
+	cout << endl;
+
+	AL1.push(10);
+	AL1.push(20);
+	AL1.showDataList();
+	AL1.showEdgeList();
+
+	cout << endl;
+	
+	AL1.push(30);
+
+	cout << endl;
+
+	AL1;
+
 
 #pragma endregion
 
