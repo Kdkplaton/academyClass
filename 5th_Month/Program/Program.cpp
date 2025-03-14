@@ -1,41 +1,40 @@
 ﻿#include <iostream>
 #include <random>
-#include <thread>
-#pragma warning(disable:4244)
+#include <time.h>
 using namespace std;
 
-const int PW_length = 10;
-
-void findPW(int* from, int* finder, int idx) {
-    for (int j = 0; j < 10; j++) {
-        if (from[idx] == j) { finder[idx] = j; break; }
-    }
-
-    cout << "Found PW: ";
-    for (int i = 0; i < PW_length; i++) {
-        if (finder[i] == NULL) { cout << "X "; }
-        else { cout << finder[i] << " "; }
-    }
-    cout << endl;
-}
-
 int main() {
-#pragma region 브루트 포스(Brute Force)
-    // 
+#pragma region 삽입 정렬 (Insertion Sort)
+	// 데이터를 하나씩 확인하면서 이미 정렬된 부분과 비교해서 
+	// 자신의 위치를 찾아 삽입하는 방식으로 정렬하는 알고리즘
 
-    int PW[PW_length], find[PW_length];
+	const int size = 10;
+	int datas[size], target;
 
-    srand(time(0));
-    for (int i = 0; i < PW_length; i++) { PW[i] = rand() % 10; find[i] = NULL; }
+	srand(time(0));
 
-    cout << "Real  PW: ";
-    for (int i = 0; i < PW_length; i++) { cout << PW[i] << " "; }
-    cout << endl;
+	cout << "정렬 전: ";
+	for (int i = 0; i < size; i++) {
+		datas[i] = rand() % 100;
+		cout << datas[i] << " ";
+	}
+	cout << endl;
 
-    for (int i = 0; i < PW_length; i++) { thread t(findPW, PW, find, i); }
-    
+	// 여기에 알고리즘을 작성하시오
+	for (int i = 1; i < size; i++) {
+		int key = datas[i];
+		for (int j = i-1; j >= 0; j--) {
+			if (key < datas[j]) { datas[j + 1] = datas[j]; datas[j] = key; }
+			else { break; }
+		}
+	}
+
+	cout << "정렬 후: ";
+	for (int i = 0; i < size; i++) { cout << datas[i] << " "; }
+	cout << endl;
+
 #pragma endregion
 
 
-    return 0;
+	return 0;
 }
