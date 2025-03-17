@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "D:\\academy_Class\\5th_Month\\Program\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|D:\\academy_Class\\5th_Month\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{65C950CD-66FC-4C48-9493-468C4223DCBD}|..\\Class_7th_EuclideanAlgorithm\\Class_7th_EuclideanAlgorithm.vcxproj|D:\\academy_Class\\5th_Month\\Class_7th_EuclideanAlgorithm\\Class_7th_EuclideanAlgorithm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8D4B4D5-8F6B-4DBF-9B2C-BE2E4C37DA2A}|..\\Class_4th_SelectionSort\\Class_4th_SelectionSort.vcxproj|D:\\academy_Class\\5th_Month\\Class_4th_SelectionSort\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|D:\\academy_Class\\5th_Month\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,32 +17,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "source.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Class_4th_SelectionSort\\source.cpp",
-              "RelativeDocumentMoniker": "..\\Class_4th_SelectionSort\\source.cpp",
-              "ToolTip": "D:\\academy_Class\\5th_Month\\Class_4th_SelectionSort\\source.cpp",
-              "RelativeToolTip": "..\\Class_4th_SelectionSort\\source.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "Class_7th_EuclideanAlgorithm.cpp",
+              "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Class_7th_EuclideanAlgorithm\\Class_7th_EuclideanAlgorithm.cpp",
+              "RelativeDocumentMoniker": "..\\Class_7th_EuclideanAlgorithm\\Class_7th_EuclideanAlgorithm.cpp",
+              "ToolTip": "D:\\academy_Class\\5th_Month\\Class_7th_EuclideanAlgorithm\\Class_7th_EuclideanAlgorithm.cpp",
+              "RelativeToolTip": "..\\Class_7th_EuclideanAlgorithm\\Class_7th_EuclideanAlgorithm.cpp",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-14T10:20:52.035Z",
+              "WhenOpened": "2025-03-17T10:41:21.927Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cpp",
               "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Program\\Program.cpp",
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\5th_Month\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAACAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-13T09:12:13.15Z",
+              "WhenOpened": "2025-03-17T10:26:46.289Z",
               "EditorCaption": ""
             }
           ]
