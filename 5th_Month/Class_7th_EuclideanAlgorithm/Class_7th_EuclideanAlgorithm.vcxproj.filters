@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Class_7th_EuclideanAlgorithm.cpp">
+    <ClCompile Include="source.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
