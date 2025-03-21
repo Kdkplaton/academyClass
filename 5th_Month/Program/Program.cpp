@@ -1,41 +1,62 @@
 ﻿#include <iostream>
+#include <random>
+#include <time.h>
 
 using namespace std;
 
-void binary_search(int list[], int key) {
-	int left = 0, right = 9;
+void QuickSort(int list[], int start, int end) {
+	if (start >= end) return;
+	
+	int pivot = start;
+	int left = start +1;
+	int right = end;
 
-	cout << "탐색 대상: " << key << " - ";
-	while (true) {
-		if (key < list[left] || key > list[right]) { cout << "존재하지 않음!" << endl; return; }
+	while (left <= right) {
+
+		while (left <= end && list[pivot] >= list[left]) {
+			left++;
+		}
+		while (right > start && list[pivot] <= list[right]) {
+			right--;
+		}
+
+		if (left > right) {
+			swap(list[pivot], list[right]);
+		}
 		else {
-			if (key == (list[(left + right) / 2])) { cout << ((left + right) / 2) + 1 << "번째 값" << endl; return; }
-			if (key < (list[(left + right) / 2])) { right = ((left + right) / 2) - 1; }
-			else if (key > (list[(left + right) / 2])) { left = ((left + right) / 2) + 1; }
+			swap(list[left], list[right]);
 		}
 	}
-};
+
+	QuickSort(list, start, right-1);
+	QuickSort(list, left, end);
+}
 
 int main() {
-#pragma region 투 포인터 알고리즘
-	// 
+#pragma region 퀵 정렬
+	// 기준점을 획득한 다음 기준점을 기준으로 배열을 나누고 한 쪽에는 기준점보다 
+	// 작은 값들이 위치하게 하고 다른 한 쪽에는 기준점보다 큰 값을이 위치하게 정렬
 
-	int datas[10] = {11,22,33,44,55,66,77,88,99,101};
+	// 나누어진 하위 배열에 대해 재귀적으로 퀵 정렬을 호출하여
+	// 모든 배열이 기본 배열이 될 때까지 반복하면서 정렬하는 알고리즘
 
-	cout << "datas: ";
+	srand(time(0));
+
+	int datas[10] = { 4,7,3,10,6,1,9,2,8,5 };
+	// for (int i = 0; i < 10; i++) { datas[i] = rand() % 10 + 1; }
+
+	cout << "Before Sort - datas: ";
 	for (int i = 0; i < 10; i++) { cout << datas[i] << " "; }
 	cout << endl;
-	binary_search(datas, 44);
-	binary_search(datas, 33);
-	binary_search(datas, 7);
-	binary_search(datas, 85);
-	binary_search(datas, 77);
-	binary_search(datas, 11);
-	binary_search(datas, 100);
 
+	QuickSort(datas, 0, 9);
+	
+	cout << "After Sort - datas: ";
+	for (int i = 0; i < 10; i++) { cout << datas[i] << " "; }
+	cout << endl;
 
 #pragma endregion
 
-
+	
 	return 0;
 }
