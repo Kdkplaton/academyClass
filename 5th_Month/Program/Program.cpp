@@ -1,82 +1,68 @@
 ﻿#include <iostream>
-#include <random>
-#include <time.h>
 
 using namespace std;
 
-void merge_sort(int list[], int start, int end) {
-	int len = (end - start) + 1;
-	int mid = (end + start) / 2;
+unsigned long long results[100000];
 
-	if (len > 1) {
-		merge_sort(list, start, mid);
-		merge_sort(list , mid+1, end);
+// 반복문(for) 사용
+unsigned long long Fibonacci1(int n) {
+	long long now = 1, before = 1, temp;
+	
+	if (n < 1) return 0;
 
-		int* temp = new int[len];
-		for (int i = 0; i < len; i++) { temp[i] = NULL; }
-		
-		int p1 = start, p2 = mid+1;
-		cout << "p1: " << p1 << " p2: " << p2 << " ";
-		
-		for (int i = 0; i < len; i++) {
-			if (list[p1] <= list[p2]) { 
-				if (p1 <= mid) { temp[i] = list[p1++]; }
-			}
-			else {
-				if (p2 <= end) { temp[i] = list[p2++]; }
-			}
-		}
+	for (int i = 0; i < n; i++) {
+		if (i < 2) { cout << now << " "; continue; }
+			
+		temp = now;
+		now = now + before;
+		before = temp;
 
-		cout << "temp: ";
-		for (int i = 0; i < len; i++) { cout << temp[i] << " "; }
-		cout << endl;
-
-		for (int i = 0; i < len; i++) { list[start+i] = temp[i]; }
-
-		delete[] temp;
+		cout << now << " ";
 	}
-	else {
-		if (len > 0) {
-			if (list[start] > list[end]) { swap(list[start], list[end]); }
-		}
-		else { return; }
-	}
-
-	cout << "start: " << start << " end: " << end << " ";
-	cout << "부분배열: ";
-	for (int i = start; i <= end; i++) { cout << list[i] << " "; }
 	cout << endl;
+
+	return now;
+}
+
+// 재귀함수 사용
+unsigned long long Fibonacci2(int n) {
+	if (results[n-1] != 0) return results[n-1];
+	else if (n <= 0) return 0;
+	else if (n <= 2) { Fibonacci2(n-1); results[n-1] = 1; }
+	else { Fibonacci2(n-1); results[n-1] = results[n-2] + results[n-3]; }
+
+	return results[n-1];
 }
 
 int main() {
-#pragma region 병합 정렬 (Merge Sort)
-	// 하나의 리스트를 두 개의 균일한 크기로 분할하고 분할된 부분 리스트를 정렬한 다음,
-	// 두 개의 정렬된 부분 리스트를 합하여 전체가 정렬된 리스트가 되게 하는 방법
 
-	// 1.   리스트의 길이가 0 또는 1이면 이미 정렬된 것으로 간주 함
+#pragma region 동적 계획법
+	// 특정 범위까지의 값을 구하기 위해 그것과 다른 범위까지의
+	// 값을 이용해서 효율적으로 값을 구하는 알고리즘
 
-	// 2.   그렇지 않은경우
-	// 2-1. 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눔
-	// 2-2. 각 부분 리스트를 재귀적으로 병합 정렬을 이용하여 정렬
-	// 2-3. 두 부분 리스트를? 다시 하나의 정렬된 리스트로 병합
+	// (Overlapping Subproblems) 겹치는 부분 문제
+	// 동일한 작은 문제들이 반복하여 나타나는 경우를 의미
+	
+	// (Optimal Substructure) 최적 부분 구조
+	// 부분 문제의 최적 결과 값을 사용하여 전체 문제의 최적 결과를 낼 수 있는 경우를 의미
 
-	srand(time(0));
 
-	int datas[10];
-	for (int i = 0; i < 10; i++) { datas[i] = rand() % 100 + 1; }
+	// 메모이제이션
+	// 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을
+	// 메모리에 저장함으로써 동일한 계산을 반복 수행하는 작업을
+	// 제거하여 프로그램의 실행 속도를 향상시키는 방법
+	
+	for (int i = 0; i < 100000; i++) { results[i] = 0; }
 
-	cout << "Before Sort: ";
-	for (int i = 0; i < 10; i++) { cout << datas[i] << " "; }
-	cout << endl;
+	int n;
+	cin >> n;
 
-	merge_sort(datas, 0, 9);
-
-	cout << "After  Sort: ";
-	for (int i = 0; i < 10; i++) { cout << datas[i] << " "; }
-	cout << endl;
+	cout << "결과(반복문)  : " << Fibonacci1(n) << endl;
+	cout << "결과(재귀함수): " << Fibonacci2(n) << endl;
 
 #pragma endregion
 
+	
 	
 	return 0;
 }
