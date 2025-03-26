@@ -2,67 +2,71 @@
 
 using namespace std;
 
-unsigned long long results[100000];
+int Greedy(int input) {
+	int res = 0;
 
-// 반복문(for) 사용
-unsigned long long Fibonacci1(int n) {
-	long long now = 1, before = 1, temp;
-	
-	if (n < 1) return 0;
+	res += input / 50000;
+	input %= 50000;
 
-	for (int i = 0; i < n; i++) {
-		if (i < 2) { cout << now << " "; continue; }
-			
-		temp = now;
-		now = now + before;
-		before = temp;
+	res += input / 10000;
+	input %= 10000;
 
-		cout << now << " ";
-	}
-	cout << endl;
+	res += input / 5000;
+	input %= 5000;
 
-	return now;
-}
+	res += input / 1000;
+	input %= 1000;
 
-// 재귀함수 사용
-unsigned long long Fibonacci2(int n) {
-	if (results[n-1] != 0) return results[n-1];
-	else if (n <= 0) return 0;
-	else if (n <= 2) { Fibonacci2(n-1); results[n-1] = 1; }
-	else { Fibonacci2(n-1); results[n-1] = results[n-2] + results[n-3]; }
+	res += input / 500;
+	input %= 500;
 
-	return results[n-1];
+	res += input / 100;
+	input %= 100;
+
+	res += input / 50;
+	input %= 50;
+
+	res += input / 10;
+	input %= 10;
+
+	return res;
 }
 
 int main() {
+#pragma region 탐욕법 (Greed Algorithm)
+	// 최적의 해를 구하는 데에 사용되는 근사적인 방법으로 여러 경우 중
+	// 하나를 검색해야 할 때마다 그 순간에 최적이라고 생각되는 것을 
+	// 선택해 나가는 방식으로 진행하여 최종적인 해답을 구하는 알고리즘
 
-#pragma region 동적 계획법
-	// 특정 범위까지의 값을 구하기 위해 그것과 다른 범위까지의
-	// 값을 이용해서 효율적으로 값을 구하는 알고리즘
+	// 1. 탐욕 선택 속성
+	// 각 단계에서 '최적의 선택'을 했을 때 전체 문제에 대한 최적의 해를 구할 수 있는 경우
 
-	// (Overlapping Subproblems) 겹치는 부분 문제
-	// 동일한 작은 문제들이 반복하여 나타나는 경우를 의미
+	// 2. 최적 부분 구조
+	// 전체 문제의 최적의 해가 '부분 문제의 최적의 해로 구성'될 수 있는 경우
+
+	// 그리디 알고리즘 단계
+	// 1. 문제의 최적 부분 구조 결정
+	// 2. 문제의 구조에 맞게 선택 절차 정의
+	// 3. 선택 절차에 따라 선택을 수행
+	// 4. 선택된 해가 문제의 조건을 만족 여부 검사
+	// 5. 조건을 만족하지 않으면 해당 해 제외
+	// 6. 모든 선택이 완료되면 해답 검사
+	// 7. 조건을 만족하지 않으면 해답 미인정
 	
-	// (Optimal Substructure) 최적 부분 구조
-	// 부분 문제의 최적 결과 값을 사용하여 전체 문제의 최적 결과를 낼 수 있는 경우를 의미
+	// 탐욕 알고리즘으로 문제를 해결하는 방법
+	// 1. 선택 절차 (Selection Procedure) : 현재 상태에서의 최적의 해답 선택
+	// 2. 적절성 검사 (Feasibility Check) : 선택된 해가 문제의 조건을 만족하는지 검사
+	// 3. 해답 검사 (Solution Check) : 원래의 문제 해결여부 검사, 해결되지 않았다면 선택 절차로 돌아가 반복
 
 
-	// 메모이제이션
-	// 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을
-	// 메모리에 저장함으로써 동일한 계산을 반복 수행하는 작업을
-	// 제거하여 프로그램의 실행 속도를 향상시키는 방법
-	
-	for (int i = 0; i < 100000; i++) { results[i] = 0; }
+	int input;
+	cout << "돈: ";
+	cin >> input;
 
-	int n;
-	cin >> n;
-
-	cout << "결과(반복문)  : " << Fibonacci1(n) << endl;
-	cout << "결과(재귀함수): " << Fibonacci2(n) << endl;
+	cout << "지폐+동전의 수: " << Greedy(input) << endl;
 
 #pragma endregion
 
-	
 	
 	return 0;
 }
