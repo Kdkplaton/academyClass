@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAF897C7-4EC9-4665-B616-164D792F3BFD}|..\\Class_14th_DynamicProgramming\\Class_14th_DynamicProgramming.vcxproj|D:\\academy_Class\\5th_Month\\Class_14th_DynamicProgramming\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{AFB07C83-71F4-4E8E-B2B9-25D91B49997C}|..\\Class_15th_Greedy\\Class_15th_Greedy.vcxproj|D:\\academy_Class\\5th_Month\\Class_15th_Greedy\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,13 +23,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "source.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Class_14th_DynamicProgramming\\source.cpp",
-              "RelativeDocumentMoniker": "..\\Class_14th_DynamicProgramming\\source.cpp",
-              "ToolTip": "D:\\academy_Class\\5th_Month\\Class_14th_DynamicProgramming\\source.cpp",
-              "RelativeToolTip": "..\\Class_14th_DynamicProgramming\\source.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Class_15th_Greedy\\source.cpp",
+              "RelativeDocumentMoniker": "..\\Class_15th_Greedy\\source.cpp",
+              "ToolTip": "D:\\academy_Class\\5th_Month\\Class_15th_Greedy\\source.cpp",
+              "RelativeToolTip": "..\\Class_15th_Greedy\\source.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEMAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-26T09:15:46.06Z",
+              "WhenOpened": "2025-03-27T09:04:58.006Z",
               "EditorCaption": ""
             },
             {
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\5th_Month\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAeAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAqwBYAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-21T09:57:44.647Z",
               "EditorCaption": ""

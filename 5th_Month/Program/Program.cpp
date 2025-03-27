@@ -1,72 +1,136 @@
 ﻿#include <iostream>
+#include <vector>
 
 using namespace std;
 
-int Greedy(int input) {
-	int res = 0;
+#define SIZE 8
 
-	res += input / 50000;
-	input %= 50000;
+template <typename T>
+struct Graph {
+private:
+	bool visited[SIZE];
+	vector<T> nearNodes[SIZE];
+	int stack[SIZE];
+	int stack_count;
+	vector<int> visit_list;
+public:
+	Graph() {
+		for (int i = 0; i < SIZE; i++) {
+			this->visited[i] = false;
+			this->stack[i] = NULL;
+		}
+		// this->visit_list = NULL;
+		this->stack_count = 0;
+	}
+	~Graph() {
+		cout << "Delete Graph!" << endl;
+	}
 
-	res += input / 10000;
-	input %= 10000;
+	void Link(int t1, int t2) {
+		for (int i = 0; i < this->nearNodes[t1].size(); i++) {
+			if (this->nearNodes[t1][i] == t2) { cout << "Already Linked!" << endl; return; }
+		}
+		this->nearNodes[t1].push_back(t2);
+		this->nearNodes[t2].push_back(t1);
+		cout << t1 << " & " << t2 << " Linked!" << endl;
+	}
 
-	res += input / 5000;
-	input %= 5000;
+	void Search(int start) {
+		if (this->visited[start] == false) {
+			this->visited[start] = true;
+			this->visit_list.push_back(start);
+		}
+		
+		int last;
+		for (int i = 0; i < this->nearNodes[start].size(); i++) {
+			if (this->visited[this->nearNodes[start][i]] == false) {
+				this->visited[this->nearNodes[start][i]] = true;
+				stack[stack_count++] = this->nearNodes[start][i];
+				this->visit_list.push_back(this->nearNodes[start][i]);
+			}
+			else { continue; }
+		}
 
-	res += input / 1000;
-	input %= 1000;
+		cout << "stack: ";
+		if (this->stack_count == 0) { cout << "N/A"; }
+		else {
+			for (int i = 0; i < this->stack_count; i++) { cout << this->stack[i] << " "; }
+		}
+		cout << endl;
 
-	res += input / 500;
-	input %= 500;
+		if (stack_count == 0) {
+			cout << "Search End!" << endl;
 
-	res += input / 100;
-	input %= 100;
+			cout << "Visited: ";
+			for (int i = 0; i < this->visit_list.size(); i++) {
+				cout << this->visit_list[i] << " ";
+			}
+			cout << endl;
 
-	res += input / 50;
-	input %= 50;
+			return;
+		}
+		else {
+			last = this->stack[--stack_count];
+			cout << "poped: " << last << endl;
+			this->stack[stack_count] = NULL;
+			Search(last);
+		}
+		
+	}
 
-	res += input / 10;
-	input %= 10;
+	void showLinks() {
+		cout << "----- 그래프의 연결관계 -----" << endl;
+		for (int i = 1; i < SIZE; i++) {
+			cout << i << "번 노드의 Links: ";
 
-	return res;
-}
+			if (this->nearNodes[i].size() == 0) { cout << "N/A" << endl; continue; }
+			
+			for (int j = 0; j < this->nearNodes[i].size(); j++) {
+				cout << this->nearNodes[i][j] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl;
+	}
+	
+};
 
 int main() {
-#pragma region 탐욕법 (Greed Algorithm)
-	// 최적의 해를 구하는 데에 사용되는 근사적인 방법으로 여러 경우 중
-	// 하나를 검색해야 할 때마다 그 순간에 최적이라고 생각되는 것을 
-	// 선택해 나가는 방식으로 진행하여 최종적인 해답을 구하는 알고리즘
+#pragma region 깊이 우선 탐색 (Depth First Search)
+	// root 노드에서 부터 다음 분기로 넘어가기
+	// 전에 해당 분기를 완벽하게 탐색하는 방법
 
-	// 1. 탐욕 선택 속성
-	// 각 단계에서 '최적의 선택'을 했을 때 전체 문제에 대한 최적의 해를 구할 수 있는 경우
+	// 깊이 우선 탐색은 자료구조 [ Stack ] 활용
 
-	// 2. 최적 부분 구조
-	// 전체 문제의 최적의 해가 '부분 문제의 최적의 해로 구성'될 수 있는 경우
+	// 1. 시작 노드를 스택에 넣고 방문 처리
+	// 2. 스택 최상단 노드에 방문하지 않은 인접노드 존재시 그 노드를 스택에 넣고 방문 처리
+	// 3. 방문하지 않은 인접 노드가 없으면 스택에서 최상단에 있는 노드 추출
+	// 4. 더이상 2번의 과정을 수행할 수 없을 때까지 반복
 
-	// 그리디 알고리즘 단계
-	// 1. 문제의 최적 부분 구조 결정
-	// 2. 문제의 구조에 맞게 선택 절차 정의
-	// 3. 선택 절차에 따라 선택을 수행
-	// 4. 선택된 해가 문제의 조건을 만족 여부 검사
-	// 5. 조건을 만족하지 않으면 해당 해 제외
-	// 6. 모든 선택이 완료되면 해답 검사
-	// 7. 조건을 만족하지 않으면 해답 미인정
-	
-	// 탐욕 알고리즘으로 문제를 해결하는 방법
-	// 1. 선택 절차 (Selection Procedure) : 현재 상태에서의 최적의 해답 선택
-	// 2. 적절성 검사 (Feasibility Check) : 선택된 해가 문제의 조건을 만족하는지 검사
-	// 3. 해답 검사 (Solution Check) : 원래의 문제 해결여부 검사, 해결되지 않았다면 선택 절차로 돌아가 반복
+	Graph<int> g1;
 
+	g1.Link(1, 2);
+	g1.Link(1, 3);
 
-	int input;
-	cout << "돈: ";
-	cin >> input;
+	g1.Link(2, 3);
+	g1.Link(2, 4);
+	g1.Link(2, 5);
 
-	cout << "지폐+동전의 수: " << Greedy(input) << endl;
+	g1.Link(3, 6);
+	g1.Link(3, 7);
+
+	g1.Link(4, 5);
+	g1.Link(6, 7);
+
+	cout << endl;
+
+	g1.showLinks();
+
+	cout << endl;
+
+	g1.Search(1);
 
 #pragma endregion
 
-	
 	return 0;
 }
