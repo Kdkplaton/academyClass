@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <queue>
 #include <vector>
 
 using namespace std;
@@ -8,31 +9,26 @@ using namespace std;
 template <typename T>
 struct Graph {
 private:
+	queue<int> que1;
+	vector<int> link[SIZE];
 	bool visited[SIZE];
-	vector<T> nearNodes[SIZE];
-	int stack[SIZE];
-	int stack_count;
 	vector<int> visit_list;
 public:
 	Graph() {
-		for (int i = 0; i < SIZE; i++) {
-			this->visited[i] = false;
-			this->stack[i] = NULL;
-		}
-		// this->visit_list = NULL;
-		this->stack_count = 0;
+		for (int i = 0; i < SIZE; i++) { this->visited[i] = false; }
+
 	}
 	~Graph() {
 		cout << "Delete Graph!" << endl;
 	}
 
-	void Link(int t1, int t2) {
-		for (int i = 0; i < this->nearNodes[t1].size(); i++) {
-			if (this->nearNodes[t1][i] == t2) { cout << "Already Linked!" << endl; return; }
+	void Link(int x, int y) {
+		for (int i = 0; i < this->link[x].size(); i++) {
+			if (this->link[x][i] == y) { cout << "Already Linked!" << endl; return; }
 		}
-		this->nearNodes[t1].push_back(t2);
-		this->nearNodes[t2].push_back(t1);
-		cout << t1 << " & " << t2 << " Linked!" << endl;
+		this->link[x].push_back(y);
+		this->link[y].push_back(x);
+		cout << x << " & " << y << " Linked!" << endl;
 	}
 
 	void Search(int start) {
@@ -41,25 +37,28 @@ public:
 			this->visit_list.push_back(start);
 		}
 		
-		int last;
-		for (int i = 0; i < this->nearNodes[start].size(); i++) {
-			if (this->visited[this->nearNodes[start][i]] == false) {
-				this->visited[this->nearNodes[start][i]] = true;
-				stack[stack_count++] = this->nearNodes[start][i];
-				this->visit_list.push_back(this->nearNodes[start][i]);
+		for (int i = 0; i < this->link[start].size(); i++) {
+			if (this->visited[this->link[start][i]] == false) {
+				this->visited[this->link[start][i]] = true;
+				que1.push(this->link[start][i]);
+				this->visit_list.push_back(this->link[start][i]);
 			}
 			else { continue; }
 		}
 
-		cout << "stack: ";
-		if (this->stack_count == 0) { cout << "N/A"; }
+		queue<int> temp = this->que1;
+		cout << "queue: ";
+		if (temp.size() == 0) { cout << "N/A"; }
 		else {
-			for (int i = 0; i < this->stack_count; i++) { cout << this->stack[i] << " "; }
+			int n = temp.size();
+			for (int i = 0; i < n; i++) {
+				cout << temp.front() << " ";
+				temp.pop();
+			}
 		}
-		cout << endl;
 
-		if (stack_count == 0) {
-			cout << "Search End!" << endl;
+		if (this->que1.size() == 0) {
+			cout << endl << "Search End!" << endl;
 
 			cout << "Visited: ";
 			for (int i = 0; i < this->visit_list.size(); i++) {
@@ -70,12 +69,12 @@ public:
 			return;
 		}
 		else {
-			last = this->stack[--stack_count];
-			cout << "poped: " << last << endl;
-			this->stack[stack_count] = NULL;
-			Search(last);
+			int poped = this->que1.front();
+			this->que1.pop();
+			cout << "\tpoped: " << poped << endl;
+			Search(poped);
 		}
-		
+
 	}
 
 	void showLinks() {
@@ -83,29 +82,23 @@ public:
 		for (int i = 1; i < SIZE; i++) {
 			cout << i << "번 노드의 Links: ";
 
-			if (this->nearNodes[i].size() == 0) { cout << "N/A" << endl; continue; }
-			
-			for (int j = 0; j < this->nearNodes[i].size(); j++) {
-				cout << this->nearNodes[i][j] << " ";
+			if (this->link[i].size() == 0) { cout << "N/A" << endl; continue; }
+
+			for (int j = 0; j < this->link[i].size(); j++) {
+				cout << this->link[i][j] << " ";
 			}
 			cout << endl;
 		}
 		cout << endl;
 	}
-	
 };
 
 int main() {
-#pragma region 깊이 우선 탐색 (Depth First Search)
-	// root 노드에서 부터 다음 분기로 넘어가기
-	// 전에 해당 분기를 완벽하게 탐색하는 방법
-
-	// 깊이 우선 탐색은 자료구조 [ Stack ] 활용
-
-	// 1. 시작 노드를 스택에 넣고 방문 처리
-	// 2. 스택 최상단 노드에 방문하지 않은 인접노드 존재시 그 노드를 스택에 넣고 방문 처리
-	// 3. 방문하지 않은 인접 노드가 없으면 스택에서 최상단에 있는 노드 추출
-	// 4. 더이상 2번의 과정을 수행할 수 없을 때까지 반복
+#pragma region 너비 우선 탐색 (Breadth First Search)
+	// 시작 정점을 방문한 후 시작 정점에 인접한 모든 정점들을 우선 방문하는 방법
+	
+	// 더 이상 방문하지 않은 정점이 없을 때까지 방문하지
+	// 않은 모든 정점들에 대해서도 너비 우선 탐색을 적용
 
 	Graph<int> g1;
 
@@ -116,6 +109,7 @@ int main() {
 	g1.Link(2, 4);
 	g1.Link(2, 5);
 
+	g1.Link(3, 1);
 	g1.Link(3, 6);
 	g1.Link(3, 7);
 
@@ -126,8 +120,7 @@ int main() {
 
 	g1.showLinks();
 
-	cout << endl;
-
+	cout << "Search start:1" << endl;
 	g1.Search(1);
 
 #pragma endregion

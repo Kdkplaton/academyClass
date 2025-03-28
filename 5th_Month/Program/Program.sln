@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class_14th_DynamicProgrammi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class_15th_Greedy", "..\Class_15th_Greedy\Class_15th_Greedy.vcxproj", "{AFB07C83-71F4-4E8E-B2B9-25D91B49997C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class_16th_DepthFirstSearch", "..\Class_16th_DepthFirstSearch\Class_16th_DepthFirstSearch.vcxproj", "{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -171,6 +173,14 @@ Global
 		{AFB07C83-71F4-4E8E-B2B9-25D91B49997C}.Release|x64.Build.0 = Release|x64
 		{AFB07C83-71F4-4E8E-B2B9-25D91B49997C}.Release|x86.ActiveCfg = Release|Win32
 		{AFB07C83-71F4-4E8E-B2B9-25D91B49997C}.Release|x86.Build.0 = Release|Win32
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Debug|x64.ActiveCfg = Debug|x64
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Debug|x64.Build.0 = Debug|x64
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Debug|x86.ActiveCfg = Debug|Win32
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Debug|x86.Build.0 = Debug|Win32
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Release|x64.ActiveCfg = Release|x64
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Release|x64.Build.0 = Release|x64
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Release|x86.ActiveCfg = Release|Win32
+		{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
