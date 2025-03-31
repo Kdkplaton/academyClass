@@ -5,9 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|D:\\academy_Class\\5th_Month\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{91CD2F20-C760-4ECC-BAD6-850B07DE21C7}|..\\Class_16th_DepthFirstSearch\\Class_16th_DepthFirstSearch.vcxproj|D:\\academy_Class\\5th_Month\\Class_16th_DepthFirstSearch\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,21 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "source.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Class_16th_DepthFirstSearch\\source.cpp",
-              "RelativeDocumentMoniker": "..\\Class_16th_DepthFirstSearch\\source.cpp",
-              "ToolTip": "D:\\academy_Class\\5th_Month\\Class_16th_DepthFirstSearch\\source.cpp",
-              "RelativeToolTip": "..\\Class_16th_DepthFirstSearch\\source.cpp",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACkAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-28T09:16:25.812Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,7 +24,7 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\5th_Month\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAACQAAAAAAAAAAADwvzMAAAAIAAAA",
+              "ViewState": "AQIAADQAAAAAAAAAAAAjwDsAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-21T09:57:44.647Z",
               "EditorCaption": ""

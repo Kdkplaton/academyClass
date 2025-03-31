@@ -1,127 +1,148 @@
 ﻿#include <iostream>
-#include <queue>
 #include <vector>
+#include <queue>
 
 using namespace std;
-
-#define SIZE 8
 
 template <typename T>
 struct Graph {
 private:
+	int SIZE;
+	vector<int>* nodes;
+	int* degrees;
 	queue<int> que1;
-	vector<int> link[SIZE];
-	bool visited[SIZE];
-	vector<int> visit_list;
+	int* pushed;
+	int* sorted;
+	int count;
 public:
-	Graph() {
-		for (int i = 0; i < SIZE; i++) { this->visited[i] = false; }
-
+	Graph(int SIZE = 8) {
+		this->SIZE = SIZE;
+		this->nodes = new vector<int>[SIZE];
+		this->degrees = new int[SIZE];
+		for (int i = 0; i < SIZE; i++) { this->degrees[i] = NULL; }
+		this->pushed = new int[SIZE];
+		for (int i = 0; i < SIZE; i++) { this->pushed[i] = NULL; }
+		this->sorted = new int[SIZE];
+		for (int i = 0; i < SIZE; i++) { this->sorted[i] = NULL; }
+		this->count = 0;
 	}
 	~Graph() {
-		cout << "Delete Graph!" << endl;
+		delete[] nodes;
+		delete[] degrees;
+		cout << "Graph End!" << endl;
 	}
 
-	void Link(int x, int y) {
-		for (int i = 0; i < this->link[x].size(); i++) {
-			if (this->link[x][i] == y) { cout << "Already Linked!" << endl; return; }
-		}
-		this->link[x].push_back(y);
-		this->link[y].push_back(x);
-		cout << x << " & " << y << " Linked!" << endl;
-	}
-
-	void Search(int start) {
-		if (this->visited[start] == false) {
-			this->visited[start] = true;
-			this->visit_list.push_back(start);
-		}
-		
-		for (int i = 0; i < this->link[start].size(); i++) {
-			if (this->visited[this->link[start][i]] == false) {
-				this->visited[this->link[start][i]] = true;
-				que1.push(this->link[start][i]);
-				this->visit_list.push_back(this->link[start][i]);
-			}
-			else { continue; }
-		}
-
-		queue<int> temp = this->que1;
-		cout << "queue: ";
-		if (temp.size() == 0) { cout << "N/A"; }
-		else {
-			int n = temp.size();
-			for (int i = 0; i < n; i++) {
-				cout << temp.front() << " ";
-				temp.pop();
+	void topological_sort() {
+		for (int i = 1; i < this->SIZE; i++) { 
+			if (this->degrees[i] == 0) {
+				bool check = false;
+				for (int j = 0; j < this->count; j++) {
+					if (this->pushed[j] == i) { check = true; break; }
+				}
+				
+				if (check == true) { continue; }
+				else {
+					this->que1.push(i);
+					this->pushed[this->count++] = i;
+					cout << "pushed " << i << " in queue" << endl;
+				}
 			}
 		}
+		int poped = this->que1.front();
+		cout << "poped: " << poped << endl;
 
 		if (this->que1.size() == 0) {
-			cout << endl << "Search End!" << endl;
-
-			cout << "Visited: ";
-			for (int i = 0; i < this->visit_list.size(); i++) {
-				cout << this->visit_list[i] << " ";
-			}
+			cout << "Topological Sort End!" << endl;
+			
+			cout << "sorted: ";
+			for (int i = 0; i < this->SIZE; i++) { cout << this->sorted[i] << " "; }
 			cout << endl;
-
+			
 			return;
 		}
-		else {
-			int poped = this->que1.front();
-			this->que1.pop();
-			cout << "\tpoped: " << poped << endl;
-			Search(poped);
+		
+		this->sorted[this->count++] = poped;
+		this->que1.pop();
+		for (int i = 0; i < this->nodes[poped].size(); i++) {
+			this->degrees[this->nodes[poped][i]]--;
+		}
+		this->showDegrees();
+
+		topological_sort();
+	}
+
+	void Link(int a, int b) {
+		for (int i = 0; i < this->nodes[a].size(); i++) {
+			if (this->nodes[a][i] == b) { cout << a << "->" << b << " Already Exists!!" << endl; return; }
+		}
+		for (int i = 0; i < this->nodes[b].size(); i++) {
+			if (this->nodes[b][i] == a) { cout << b << "->" << a << " Already Exists!!" << endl; return; }
 		}
 
+		this->nodes[a].push_back(b);
+		this->degrees[b]++;
+		cout << "Link " << a << " to " << b << endl;
 	}
 
 	void showLinks() {
-		cout << "----- 그래프의 연결관계 -----" << endl;
-		for (int i = 1; i < SIZE; i++) {
-			cout << i << "번 노드의 Links: ";
-
-			if (this->link[i].size() == 0) { cout << "N/A" << endl; continue; }
-
-			for (int j = 0; j < this->link[i].size(); j++) {
-				cout << this->link[i][j] << " ";
+		cout << "----- Graph Links -----" << endl;
+		for (int i = 1; i < this->SIZE; i++) {
+			cout << i << " -> [ ";
+			if (this->nodes[i].size() == 0) { cout << "N/A "; }
+			else {
+				for (int j = 0; j < this->nodes[i].size(); j++) { cout << this->nodes[i][j] << " "; }
 			}
-			cout << endl;
+			cout << "]" << endl;
+		}
+	}
+	void showDegrees() {
+		cout << "----- Graph Degrees -----" << endl;
+		cout << "degrees: ";
+		for (int i = 1; i < this->SIZE; i++) {
+			cout << this->degrees[i] << " ";
 		}
 		cout << endl;
 	}
 };
 
 int main() {
-#pragma region 너비 우선 탐색 (Breadth First Search)
-	// 시작 정점을 방문한 후 시작 정점에 인접한 모든 정점들을 우선 방문하는 방법
-	
-	// 더 이상 방문하지 않은 정점이 없을 때까지 방문하지
-	// 않은 모든 정점들에 대해서도 너비 우선 탐색을 적용
+#pragma region 위상 정렬 (Topological Sort)
+	// 병합 그래프에 존재하는 각 정점들의 선행 순서를 지키며, 모든 정점을 차례대로 진행하는 알고리즘
+
+	// 사이클이 발생하는 경우 위상 정렬을 수행할 수 없음
+
+	// DAG(Directed Acyclic Graph) : 사이클이 존재하지 않는 그래프
+
+	// 시간 복잡도 : O(V + E)
+
+	// 위상 정렬 방법
+	// 1. 진입 차수가 0인 정점을 큐(Queue)에 삽입
+	// 2. 큐에서 원소를 꺼내 연결된 모든 간선 제거
+	// 3. 간선 제거 이후에 진입 차수가 0이 된 정점을 큐에 삽입
+	// 4. 큐가 비어있을때 까지 2-3번 작업을 반복
 
 	Graph<int> g1;
 
 	g1.Link(1, 2);
-	g1.Link(1, 3);
-
+	g1.Link(1, 5);
 	g1.Link(2, 3);
-	g1.Link(2, 4);
-	g1.Link(2, 5);
-
-	g1.Link(3, 1);
-	g1.Link(3, 6);
-	g1.Link(3, 7);
-
-	g1.Link(4, 5);
+	g1.Link(3, 4);
+	g1.Link(4, 6);
+	g1.Link(5, 6);
 	g1.Link(6, 7);
 
 	cout << endl;
 
 	g1.showLinks();
+	
+	cout << endl;
+	
+	g1.showDegrees();
 
-	cout << "Search start:1" << endl;
-	g1.Search(1);
+	cout << endl;
+
+	g1.topological_sort();
+
 
 #pragma endregion
 
