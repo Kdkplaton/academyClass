@@ -14,6 +14,7 @@ private:
 	int* pushed;
 	int* sorted;
 	int count;
+	int count2;
 public:
 	Graph(int SIZE = 8) {
 		this->SIZE = SIZE;
@@ -25,6 +26,7 @@ public:
 		this->sorted = new int[SIZE];
 		for (int i = 0; i < SIZE; i++) { this->sorted[i] = NULL; }
 		this->count = 0;
+		this->count2 = 0;
 	}
 	~Graph() {
 		delete[] nodes;
@@ -44,29 +46,27 @@ public:
 				else {
 					this->que1.push(i);
 					this->pushed[this->count++] = i;
-					cout << "pushed " << i << " in queue" << endl;
 				}
 			}
 		}
-		int poped = this->que1.front();
-		cout << "poped: " << poped << endl;
-
+		
 		if (this->que1.size() == 0) {
 			cout << "Topological Sort End!" << endl;
 			
 			cout << "sorted: ";
-			for (int i = 0; i < this->SIZE; i++) { cout << this->sorted[i] << " "; }
+			for (int i = 0; i < this->SIZE-1; i++) { cout << this->sorted[i] << " "; }
 			cout << endl;
 			
 			return;
 		}
+
+		int poped = this->que1.front();
 		
-		this->sorted[this->count++] = poped;
+		this->sorted[this->count2++] = poped;
 		this->que1.pop();
 		for (int i = 0; i < this->nodes[poped].size(); i++) {
 			this->degrees[this->nodes[poped][i]]--;
 		}
-		this->showDegrees();
 
 		topological_sort();
 	}
