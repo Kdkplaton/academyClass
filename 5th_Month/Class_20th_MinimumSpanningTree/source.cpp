@@ -205,7 +205,6 @@ int main() {
 
 
 #pragma endregion
-	// 커밋 이름 무엇?
 
 	return 0;
 }
