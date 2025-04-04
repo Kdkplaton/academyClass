@@ -1,2 +1,3 @@
 ﻿  Program.cpp
+D:\academy_Class\5th_Month\Program\Program.cpp(6,9): warning C4005: 'INFINITY': 매크로 재정의
   Program.vcxproj -> D:\academy_Class\5th_Month\Program\x64\Debug\Program.exe

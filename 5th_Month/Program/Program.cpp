@@ -1,170 +1,127 @@
 ﻿#include <iostream>
+#include <iomanip>
 #include <vector>
 
 using namespace std;
 
-class Edge {
-private:
-	int start;
-	int end;
-	int dist;
-public:
-	Edge(int node1 = NULL, int node2 = NULL, int val = NULL) {
-		this->start = node1;
-		this->end = node2;
-		this->dist = val;
-	}
-	~Edge() {
+#define INFINITY 10000000
 
-	}
-
-	void update_dist(int val) { this->dist = val; }
-	int get_start() { return this->start; }
-	int get_end() { return this->end; }
-	int get_dist() { return this->dist; }
-};
-
-class Kruskal {
+class Dijkstra {
 private:
 	int SIZE;
-	vector<Edge> edges;
-	int* parents;
-	int cost;
+	int** weights;
+	bool* visited;
+	int* distance;
+
 public:
-	Kruskal(int size = 8) {
+	Dijkstra(int size = 7) {
 		this->SIZE = size;
-		this->parents = new int[size];
-		for (int i = 0; i < size; i++) { this->parents[i] = i; cout << parents[i] << endl; }
-		this->cost = 0;
-
-		cout << "Kruskal Start!\n" << endl;
-	}
-	~Kruskal() {
-		delete[] parents;
-		cout << "\nKruskal End!" << endl;
-	}
-
-	void set_edge(int node1, int node2, int val) {
-		for (int i = 0; i < this->edges.size(); i++) {
-			if (this->edges[i].get_start() == node1 && this->edges[i].get_end() == node2) {
-				// edges[i].update_dist(val);
-				cout << "Edge " << node1 << "↔" << node2 << " Already Exsists!" << endl; return;
-			}
-			else if (this->edges[i].get_start() == node2 && this->edges[i].get_end() == node1) {
-				// edges[i].update_dist(val);
-				cout << "Edge " << node1 << "↔" << node2 << " Already Exsists!" << endl; return;
+		this->weights = new int* [size];
+		for (int i = 0; i < size; i++) {
+			this->weights[i] = new int[size];
+			for (int j = 0; j < size; j++) {
+				if (i == j) { this->weights[i][j] = 0; }
+				else { this->weights[i][j] = INFINITY; }
 			}
 		}
-		this->edges.push_back(Edge(node1, node2, val));
-		if (node1 > node2) { this->parents[node1] = node2; }
-		else { this->parents[node1] = node2; }
-		cout << "Edge " << node1 << "↔" << node2 << " added!" << endl;
-	}
-	void sort_edges() {
-		for (int i = 0; i < this->edges.size() - 1; i++) {
-			int min = i;
-			for (int j = i + 1; j < this->edges.size(); j++) {
-				int dist1 = this->edges[min].get_dist();
-				int dist2 = this->edges[j].get_dist();
-				if (dist1 > dist2) { min = j; }
-			}
-			swap(this->edges[i], this->edges[min]);
+		this->visited = new bool[size];
+		this->distance = new int[size];
+		for (int i = 0; i < size; i++) {
+			this->visited[i] = false;
+			this->distance[i] = 0;
 		}
 
-		cout << "Edges sorted!" << endl;
-		this->show_edges();
 	}
-	
-	void find_lowestDistTree() {
-		this->sort_edges();
-		
-		for (int i = 0; i < this->edges.size(); i++) {
-			int n1 = this->edges[i].get_start();
-			int n2 = this->edges[i].get_end();
-			if (n1 > n2) {
-				if () {}
-			}
+	~Dijkstra() {
+		for (int i = 0; i < this->SIZE; i++) { delete[] this->weights[i]; }
+		delete[] this->weights;
+		delete[] visited;
+	}
+
+	void calculate(int start) {
+		bool check = false;
+		for (int i = 0; i < this->SIZE; i++) {
+			if (this->visited[i] == false) { check == true; break; }
+		}
+		if (check == false) {
+			cout << "Calculate End!" << endl;
+			
+			cout << "Distance: ";
+			for (int i = 0; i < this->SIZE; i++) { cout << this->distance[i] << ""; }
+			cout << endl;
+		}
+
+		int target = start - 1;
+		this->visited[target] = true;
+		for (int i = 0; i < this->SIZE; i++) {
+			if (this->visited[i] == true) { continue; }
+			else { this->distance[i] = this->weights[target][i]; }
+		}
+
+		int min = INFINITY;
+		for (int i = 0; i < this->SIZE; i++) {
+			if (this->visited[i] == true) { continue; }
 			else {
-
+				if (this->distance[min] > this->distance[i]) { min = i; }
 			}
-
 		}
 
+		calculate(min);
 	}
 
-	void show_edges() {
-		cout << "-- Show Edge List --" << endl;
-		for (int i = 0; i < this->edges.size(); i++) {
-			cout << "간선[" << this->edges[i].get_start() << "↔" << this->edges[i].get_end() << "] " << this->edges[i].get_dist() << endl;
+	void set_weight(int x, int y, int val) {
+		if (this->weights[x - 1][y - 1] != INFINITY) { cout << "Already Exsist!!" << endl; }
+		else {
+			this->weights[x - 1][y - 1] = val; this->weights[y - 1][x - 1] = val;
+			cout << x << "↔" << y << " Set!" << endl;
 		}
 	}
-	void show_parents() {
-		cout << "-- Show Parents List --" << endl;
-		for (int i = 1; i < this->SIZE; i++) {
-			cout << i << "의 부모: " << this->parents[i] << endl;
+	void show_weights() {
+		for (int i = 0; i < this->SIZE; i++) {
+			for (int j = 0; j < this->SIZE; j++) {
+				cout << setw(8) << this->weights[i][j] << " ";
+			}
+			cout << endl;
 		}
+		cout << endl;
 	}
 };
 
 int main() {
-#pragma region 최소 신장 트리
-	// 그래프의 모든 정점을 포함하면서 사이클이 존재하지 않는 부분 그래프
-	// 그래프의 모든 정점을 최소비용으로 연결하는 트리
+#pragma region ???
+	// 시작점으로부터 모든 노드까지의 최소 거리를 구해주는 알고리즘
 
-	// 그래프의 정점의 수가 n개일 때, 간선의 수는 n-1개 (결과)
-
-	Kruskal krsk1;
-
-	// 존재하는 모든 간선 관계를 각 노드의 관점에서 전부 설정
-	// ※ 이미 등록된 관계는 설정(추가)되지 않음 ※
-	cout << "---- Initialize Nodes ----" << endl;
+	// 1. 거리 배열에 weight[시작 노드]의 값들로 초기화
+	// 2. 시작점을 방문 처리
+	// 3. 거리 배열에서 최소비용 노드를 찾고 방문 처리
+	//    단, 이미 방문한 노드는 제외
+	// 4. 최소비용 노드를 거쳐갈 지 고민하여 거리 배열을 갱신
+	//    단, 이미 방문한 노드는 제외
+	// 5. 모든 노드를 방문할 때까지 3~4번 반복
 	
-	krsk1.set_edge(1, 2, 64);
-	krsk1.set_edge(1, 4, 30);
-	krsk1.set_edge(1, 5, 19);
-	krsk1.set_edge(1, 7, 10);
+	// 방문하지 않은 노드 중에서 가장 작은 거리를 가진 노드를
+	// 방문하고, 그 노드와 연결된 다른 노드까지의 거리를 계산함
 
-	krsk1.set_edge(2, 1, 64);	// 추가되지 않음
-	krsk1.set_edge(2, 4, 25);
-	krsk1.set_edge(2, 5, 61);
+	Dijkstra dijkstra1;
 
-	krsk1.set_edge(4, 1, 30);	// 추가되지 않음
-	krsk1.set_edge(4, 2, 25);	// 추가되지 않음
-	krsk1.set_edge(4, 7, 14);
+	dijkstra1.set_weight(1, 2, 2);
+	dijkstra1.set_weight(1, 3, 5);
+	dijkstra1.set_weight(1, 4, 1);
+	dijkstra1.set_weight(2, 1, 2);
+	dijkstra1.set_weight(2, 3, 3);
+	dijkstra1.set_weight(2, 4, 2);
+	dijkstra1.set_weight(3, 4, 3);
+	dijkstra1.set_weight(3, 5, 1);
+	dijkstra1.set_weight(3, 6, 5);
+	dijkstra1.set_weight(4, 2, 2);
+	dijkstra1.set_weight(4, 5, 1);
+	dijkstra1.set_weight(5, 6, 2);
 
-	krsk1.set_edge(7, 1, 10);	// 추가되지 않음
-	krsk1.set_edge(7, 4, 14);	// 추가되지 않음
-	krsk1.set_edge(7, 5, 73);
-
-	krsk1.set_edge(5, 1, 19);	// 추가되지 않음
-	krsk1.set_edge(5, 2, 61);	// 추가되지 않음
-	krsk1.set_edge(5, 3, 22);
-	krsk1.set_edge(5, 6, 48);
-	krsk1.set_edge(5, 7, 73);	// 추가되지 않음
-
-	krsk1.set_edge(3, 5, 22);	// 추가되지 않음
-	krsk1.set_edge(3, 6, 36);
-	
-	krsk1.set_edge(6, 3, 36);	// 추가되지 않음
-	krsk1.set_edge(6, 5, 48);	// 추가되지 않음
-
-	cout << "---- Initialize Ended ----" << endl;
-	
-	cout << endl;
-	
-	krsk1.show_edges();
-
-	cout << endl;
-
-	krsk1.show_parents();
-
-	cout << endl;
-
-	krsk1.find_lowestDistTree();
-
-
+	dijkstra1.show_weights();
+	// INFINITY가 출력할때 너무 길어서 -1로 임시 대체함
 
 #pragma endregion
+
 
 	return 0;
 }
