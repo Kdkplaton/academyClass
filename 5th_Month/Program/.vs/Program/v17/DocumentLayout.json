@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{90DF3489-34E3-4806-8FD9-C931B262B371}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{100E88E5-8191-4F76-B9E1-E8285DA78546}|..\\Class_20th_MinimumSpanningTree\\Class_20th_MinimumSpanningTree.vcxproj|D:\\academy_Class\\5th_Month\\Class_20th_MinimumSpanningTree\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{24A0E25F-CD94-4DEB-9426-7A4805B3BB53}|..\\Class_21th_Dijkstra\\Class_21th_Dijkstra.vcxproj|D:\\academy_Class\\5th_Month\\Class_21th_Dijkstra\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,13 +23,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "source.cpp",
-              "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Class_20th_MinimumSpanningTree\\source.cpp",
-              "RelativeDocumentMoniker": "..\\Class_20th_MinimumSpanningTree\\source.cpp",
-              "ToolTip": "D:\\academy_Class\\5th_Month\\Class_20th_MinimumSpanningTree\\source.cpp",
-              "RelativeToolTip": "..\\Class_20th_MinimumSpanningTree\\source.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAM4AAAARAAAA",
+              "DocumentMoniker": "D:\\academy_Class\\5th_Month\\Class_21th_Dijkstra\\source.cpp",
+              "RelativeDocumentMoniker": "..\\Class_21th_Dijkstra\\source.cpp",
+              "ToolTip": "D:\\academy_Class\\5th_Month\\Class_21th_Dijkstra\\source.cpp",
+              "RelativeToolTip": "..\\Class_21th_Dijkstra\\source.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-04T10:41:26.907Z",
+              "WhenOpened": "2025-04-07T09:37:14.912Z",
               "EditorCaption": ""
             },
             {
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "D:\\academy_Class\\5th_Month\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAADoAAAADAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-03T09:22:26.189Z",
               "EditorCaption": ""
